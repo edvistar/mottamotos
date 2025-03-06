@@ -3,13 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from './services/login.service';
 import { CookieService } from 'ngx-cookie-service';
-import { Login } from '../../iterfaces/login';
+import { Login } from '../../interfaces/login';
 import { StorageService } from '../../../shared/data-access/storage.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  //imports: [MatFormFieldModule],
+  imports: [MatFormFieldModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -29,35 +30,35 @@ export class LoginComponent {
 
     });
   }
-  iniciarSesion(){
-    this.mostrarLoading = true;
-    const request: Login = {
-      userName: this.formLogin.value.username,
-      password: this.formLogin.value.password
-    };
-    this.loginService.iniciarSesion(request).subscribe({
-      next: (response) => {
-        this._storageService.guardarSesion(response);
-        this.cookieService.set(
-          'Authorization',
-          `Bearer ${response.token}`,
-          undefined,
-          '/',
-          undefined,
-          true,
-          'Strict'
-        );
-        this.router.navigate(['layout']);
+  // iniciarSesion(){
+  //   this.mostrarLoading = true;
+  //   const request: Login = {
+  //     userName: this.formLogin.value.username,
+  //     password: this.formLogin.value.password
+  //   };
+  //   this.loginService.iniciarSesion(request).subscribe({
+  //     next: (response) => {
+  //       this._storageService.guardarSesion(response);
+  //       this.cookieService.set(
+  //         'Authorization',
+  //         `Bearer ${response.token}`,
+  //         undefined,
+  //         '/',
+  //         undefined,
+  //         true,
+  //         'Strict'
+  //       );
+  //       this.router.navigate(['layout']);
 
-      },
-      complete: ()=>{
-        this.mostrarLoading = false;
-      },
-      error:(error) =>{
-        this._storageService.mostrarAlerta(error.error, 'Error!');
-        this.mostrarLoading = false;
+  //     },
+  //     complete: ()=>{
+  //       this.mostrarLoading = false;
+  //     },
+  //     error:(error) =>{
+  //       this._storageService.mostrarAlerta(error.error, 'Error!');
+  //       this.mostrarLoading = false;
 
-      }
-    });
-  }
+  //     }
+  //   });
+  // }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Sesion } from '../../auth/iterfaces/sesion';
+import { Sesion } from '../../auth/interfaces/sesion';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 
