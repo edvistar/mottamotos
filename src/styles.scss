@@ -1,1 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: rgb(30,144,255);
+  background: radial-gradient(circle, rgba(30,144,255,1) 16%, rgba(0,71,171,1) 100%);
+
+  min-height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
+  grid-template-rows: auto 1fr auto; /* Header, contenido principal y footer */
+ }
+mat-toolbar {
+  background: rgb(172, 138, 74);
+  display: flex;
+  justify-content: space-between;  /* Esto asegura que los dos contenedores estén separados */
+  align-items: center;             /* Centra los elementos verticalmente */
+
+}
+
+.left-container {
+  display: flex;
+  align-items: center;  /* Alinea el título y el botón de "Inicio" verticalmente */
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: rgb(17, 17, 37);
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+  z-index: 10; /* Opcional, para asegurarte de que no quede oculto */
+}
+.mt-custom {
+  margin-top: 5rem;
+}
+.mb-custom{
+  margin-bottom: 7rem;
+}
+
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
