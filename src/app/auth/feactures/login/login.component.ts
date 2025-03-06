@@ -61,4 +61,7 @@ export class LoginComponent {
       }
     });
   }
+  BackHome(): void {
+    this.router.navigate(['/']);
+  }
 }
