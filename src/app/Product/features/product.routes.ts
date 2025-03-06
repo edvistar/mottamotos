@@ -7,7 +7,7 @@ export default [
       .then(m => m.ListProductComponent), // Ensure correct named export
   },
   {
-    path: 'product/:id',
+    path: 'detail/:id',
     loadComponent: () => import('./detail-product/detail-product.component')
       .then(m => m.DetailProductComponent), // Ensure correct named export
   }

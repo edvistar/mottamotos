@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'products',
+    path: 'product',
     loadChildren: () => import('./Product/features/product.routes')
       .then(m => m.default) // Ensure 'ProductRoutes' is properly exported
   },
@@ -14,11 +14,15 @@ export const routes: Routes = [
   },
   { path: 'layout',
     loadChildren: ()=> import ('./shared/feactures/shared.routes').then(m=> m.default)
-
   },
  {
   path: '',
   loadComponent: () => import('./Landing/landing-page/landing-page.component')
   .then(m => m.LandingPageComponent), // Asegúrate de exportar correctamente el componente
 },
+  {
+    path:'**',
+    redirectTo: '',
+    pathMatch: 'full'
+  },
 ];

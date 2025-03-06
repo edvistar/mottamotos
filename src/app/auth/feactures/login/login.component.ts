@@ -1,16 +1,21 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from './services/login.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Login } from '../../interfaces/login';
 import { StorageService } from '../../../shared/data-access/storage.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatFormFieldModule],
+  imports: [MatFormFieldModule,
+    ReactiveFormsModule, MatInputModule,
+
+
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -48,8 +53,7 @@ export class LoginComponent {
           true,
           'Strict'
         );
-        this.router.navigate(['layout']);
-
+        this.router.navigateByUrl('layout');
       },
       complete: ()=>{
         this.mostrarLoading = false;
