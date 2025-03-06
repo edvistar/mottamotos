@@ -12,6 +12,10 @@ export const routes: Routes = [
     loadComponent: () => import('./auth/feactures/login/login.component')
       .then(m => m.LoginComponent), // ✅ CORRECTO: loadComponent para standalone components
   },
+  { path: 'layout',
+    loadChildren: ()=> import ('./shared/feactures/shared.routes').then(m=> m.default)
+
+  },
  {
   path: '',
   loadComponent: () => import('./Landing/landing-page/landing-page.component')
