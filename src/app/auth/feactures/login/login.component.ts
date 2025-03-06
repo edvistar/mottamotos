@@ -30,35 +30,35 @@ export class LoginComponent {
 
     });
   }
-  // iniciarSesion(){
-  //   this.mostrarLoading = true;
-  //   const request: Login = {
-  //     userName: this.formLogin.value.username,
-  //     password: this.formLogin.value.password
-  //   };
-  //   this.loginService.iniciarSesion(request).subscribe({
-  //     next: (response) => {
-  //       this._storageService.guardarSesion(response);
-  //       this.cookieService.set(
-  //         'Authorization',
-  //         `Bearer ${response.token}`,
-  //         undefined,
-  //         '/',
-  //         undefined,
-  //         true,
-  //         'Strict'
-  //       );
-  //       this.router.navigate(['layout']);
+  iniciarSesion(){
+    this.mostrarLoading = true;
+    const request: Login = {
+      userName: this.formLogin.value.username,
+      password: this.formLogin.value.password
+    };
+    this.loginService.iniciarSesion(request).subscribe({
+      next: (response) => {
+        this._storageService.guardarSesion(response);
+        this.cookieService.set(
+          'Authorization',
+          `Bearer ${response.token}`,
+          undefined,
+          '/',
+          undefined,
+          true,
+          'Strict'
+        );
+        this.router.navigate(['layout']);
 
-  //     },
-  //     complete: ()=>{
-  //       this.mostrarLoading = false;
-  //     },
-  //     error:(error) =>{
-  //       this._storageService.mostrarAlerta(error.error, 'Error!');
-  //       this.mostrarLoading = false;
+      },
+      complete: ()=>{
+        this.mostrarLoading = false;
+      },
+      error:(error) =>{
+        this._storageService.mostrarAlerta(error.error, 'Error!');
+        this.mostrarLoading = false;
 
-  //     }
-  //   });
-  // }
+      }
+    });
+  }
 }
