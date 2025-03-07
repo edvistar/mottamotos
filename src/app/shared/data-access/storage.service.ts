@@ -25,9 +25,7 @@ export class StorageService {
 
   obtenerSesion(){
     const sesionString = localStorage.getItem("usuarioSesion");
-    console.log("Aqui estamos verificando",sesionString);
     const usuarioSesion = JSON.parse(sesionString!);
-    console.log("Aqui estamos verificando",usuarioSesion);
     return usuarioSesion;
   }
 

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenav, MatSidenavModule} from '@angular/material/sidenav';
@@ -20,18 +20,10 @@ import { RouterModule } from '@angular/router';
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })
-export class LayoutComponent implements AfterViewInit {
+export class LayoutComponent implements OnInit {
   @ViewChild('sidenav') sidenav!: MatSidenav;
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      console.log('Sidenav:', this.sidenav);
-    }, 1000);
-  }
-
   toggleSidenav() {
-    console.log('Botón clickeado');
-    console.log('Sidenav:', this.sidenav);
     if (this.sidenav) {
       this.sidenav.toggle();
     } else {
