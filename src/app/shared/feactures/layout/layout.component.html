@@ -5,7 +5,7 @@
   </button>
 
   <span style="flex: 1 1 auto;"></span>
-  <label style="font-size: 14px; margin-right: 20px;">{{username}}</label>
+  <label >{{username}}</label>
   <button mat-icon-button (click)="cerrarSesion();">
     <mat-icon>logout</mat-icon>
   </button>
@@ -13,49 +13,49 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav #sidenav opened mode="side" style="width: 220px; background: rgb(234, 232, 232);">
+  <mat-sidenav #sidenav opened mode="side" >
     <mat-nav-list>
-      <mat-list-item routerLink="/layout/dashboard">
-        <mat-icon matListItemIcon style="color: white">dashboard</mat-icon>
-      <div matListItemTitle style="color: white">Dashboard</div>
+      <mat-list-item [routerLink]="'/layout/dashboard'">
+        <mat-icon matListItemIcon >dashboard</mat-icon>
+      <div matListItemTitle >Dashboard</div>
       </mat-list-item>
-      <mat-list-item routerLink="/layout/product">
-        <mat-icon matListItemIcon style="color: white">shopping_bag</mat-icon>
-      <div matListItemTitle style="color: white">Productos</div>
+      <mat-list-item [routerLink]="'product'">
+        <mat-icon matListItemIcon >shopping_bag</mat-icon>
+      <div matListItemTitle >Productos</div>
       </mat-list-item>
-      <mat-list-item routerLink="/layout/chair">
-        <mat-icon matListItemIcon style="color: white">event_seat</mat-icon>
-      <div matListItemTitle style="color: white">Puestos de Servicio</div>
+      <mat-list-item [routerLink]="'`product/detail/${id}`'">
+        <mat-icon matListItemIcon >event_seat</mat-icon>
+      <div matListItemTitle >Puestos de Servicio</div>
       </mat-list-item>
-      <mat-list-item routerLink="/layout/orden">
-        <mat-icon matListItemIcon style="color: white">weekend</mat-icon>
-      <div matListItemTitle style="color: white">Atencion</div>
+      <mat-list-item [routerLink]="'/layout/orden'">
+        <mat-icon matListItemIcon >weekend</mat-icon>
+      <div matListItemTitle >Atencion</div>
       </mat-list-item>
-      <mat-list-item routerLink="/layout/listadoOrden">
-        <mat-icon matListItemIcon style="color: white">spa</mat-icon>
-      <div matListItemTitle style="color: white">Ordenes</div>
+      <mat-list-item [routerLink]="'/layout/listadoOrden'">
+        <mat-icon matListItemIcon >spa</mat-icon>
+      <div matListItemTitle >Ordenes</div>
       </mat-list-item>
-      <mat-list-item routerLink="/layout/servicios">
-        <mat-icon matListItemIcon style="color: white">content_cut</mat-icon>
-      <div matListItemTitle style="color: white">Servicios</div>
+      <mat-list-item [routerLink]="'/layout/servicios'">
+        <mat-icon matListItemIcon >content_cut</mat-icon>
+      <div matListItemTitle >Servicios</div>
       </mat-list-item>
-      <mat-list-item routerLink="/layout/usuarioListado">
-        <mat-icon matListItemIcon style="color: white">account_circle</mat-icon>
-      <div matListItemTitle style="color: white">Usuarios</div>
+      <mat-list-item [routerLink]="'/layout/usuarioListado'">
+        <mat-icon matListItemIcon >account_circle</mat-icon>
+      <div matListItemTitle >Usuarios</div>
       </mat-list-item>
-      <mat-list-item routerLink="/layout/ListMarca">
-        <mat-icon matListItemIcon style="color: white">account_circle</mat-icon>
-      <div matListItemTitle style="color: white">Marcas</div>
+      <mat-list-item [routerLink]="'/layout/ListMarca'">
+        <mat-icon matListItemIcon >account_circle</mat-icon>
+      <div matListItemTitle >Marcas</div>
       </mat-list-item>
-      <mat-list-item routerLink="/layout/category">
-        <mat-icon matListItemIcon style="color: white">account_circle</mat-icon>
-      <div matListItemTitle style="color: white">Categorias</div>
+      <mat-list-item [routerLink]="'/layout/category'">
+        <mat-icon matListItemIcon >account_circle</mat-icon>
+      <div matListItemTitle >Categorias</div>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <div style="height: 90vh;">
+    <div class="container">
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>

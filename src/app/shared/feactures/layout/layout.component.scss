@@ -1,0 +1,30 @@
+matListItemIcon{
+    color: white
+}
+
+matListItemTitle{
+    color: aqua;
+}
+
+mat-sidenav-content{
+    padding: 5px;
+    border-radius: 10px;
+    height: 90vh; 
+}
+
+mat-sidenav{
+    width: 220px; /* Ajusta el ancho del sidebar */
+    // background-color: #a31515; /* O el color que prefieras */
+    border-right: 2px solid rgba(255, 255, 255, 0.2); /* Línea separadora */
+}
+
+label{
+    font-size: 14px; 
+    margin-right: 20px;
+}
+
+.container{
+    background: #a31515;
+}
+
+

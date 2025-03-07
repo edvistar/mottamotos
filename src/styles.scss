@@ -10,8 +10,14 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: rgb(30,144,255);
-  background: radial-gradient(circle, rgba(30,144,255,1) 16%, rgba(0,71,171,1) 100%);
+  // background: rgb(30,144,255);
+  // background: radial-gradient(circle, rgba(30,144,255,1) 16%, rgba(0,71,171,1) 100%);
+
+  background: rgb(3,114,247);
+  background: linear-gradient(90deg, rgba(3,114,247,0.5494572829131652) 0%, rgba(162,183,255,0.4962359943977591) 1%);
+
+
+
   min-height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
   grid-template-rows: auto 1fr auto; /* Header, contenido principal y footer */
  }
