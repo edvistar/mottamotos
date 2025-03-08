@@ -11,21 +11,25 @@ export default [
         path: '',
         component: LayoutComponent, // 👈 Este es el contenedor con el <router-outlet>
         children: [ // 👈 Rutas hijas que se cargan dentro del layout
-         
-            { 
-                path: 'product', 
+
+            {
+                path: 'product',
                 loadChildren: () => import('../../Product/features/product.routes')
                   .then(m => m.default) // 👈 Carga las rutas del módulo de productos
             },
-        
-        
-        
-        
-        
-        
-        
-        ] 
-       
+
+            {
+              path: 'marca',
+              loadChildren: () => import('../../Marca/features/marca.routes')
+                .then(m => m.default) // 👈 Carga las rutas del módulo de productos
+          },
+
+
+
+
+
+        ]
+
 
     }
 

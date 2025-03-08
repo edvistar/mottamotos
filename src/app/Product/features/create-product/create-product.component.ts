@@ -25,7 +25,7 @@ import {MatInputModule} from '@angular/material/input';
   styleUrl: './create-product.component.scss'
 })
 export class CreateProductComponent {
-  marcas: Marca[] = [];
+marcas: Marca[] = [];
 category: Category[] = [];
 productId:number | null = null;
 selectedFiles: File[] = []; // Array para almacenar los archivos seleccionados

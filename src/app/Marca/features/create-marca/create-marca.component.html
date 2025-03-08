@@ -1,0 +1,49 @@
+<h1>Marca component</h1>
+<div class="container" fxLayout="row" fxLayoutAlign="center center">
+  <form [formGroup]="formMarca">
+    <mat-card class="form-card">
+      <mat-card-header>
+        <h1 class="text-center">Crear una nueva Marca</h1>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div fxLayout="row wrap" fxLayoutGap="16px">
+          <mat-form-field fxFlex="45%" appearance="fill">
+            <mat-label>Nombre de Marca</mat-label>
+            <input matInput formControlName="name" placeholder="Ingrese el Nombre de la marca">
+          </mat-form-field>
+
+        <mat-form-field fxFlex="100%" appearance="fill">
+          <mat-label>Descripción de la Marca</mat-label>
+          <textarea matInput formControlName="description" placeholder="Ingrese la descripción"></textarea>
+        </mat-form-field>
+
+          <mat-form-field fxFlex="45%" appearance="fill">
+            <mat-label>Estatus</mat-label>
+            <mat-select formControlName="status">
+              <mat-option [value]="true">Activo</mat-option>
+              <mat-option [value]="false">Inactivo</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+
+        <div class="file-container">
+          <button mat-raised-button color="primary" (click)="fileInput.click()">Seleccionar imágenes</button>
+          <input #fileInput type="file" (change)="onFileSelected($event)" hidden />
+        </div>
+        <div *ngIf="images.length > 0" class="preview-container">
+          <h3>Previsualización:</h3>
+          <div class="image-grid">
+            <img *ngFor="let img of images; let i = index" [src]="img" class="preview-image" />
+          </div>
+        </div>
+
+        <div class="button-container">
+          <button mat-raised-button color="primary" (click)="CrearModificarMarca()">Crear Marca</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</div>
+
