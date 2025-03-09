@@ -5,13 +5,17 @@ import { StorageService } from '../../../shared/data-access/storage.service';
 import {MatCardModule} from '@angular/material/card';
 import { NgIf, NgFor, NgClass } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NavbarComponent } from '../../../shared/feactures/navbar/navbar.component';
+import { FooterComponent } from '../../../shared/feactures/footer/footer.component';
 
 @Component({
   selector: 'app-detail-product',
   standalone: true,
   imports: [
     MatCardModule, NgIf, NgFor, NgClass,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NavbarComponent,
+    FooterComponent
   ],
   templateUrl: './detail-product.component.html',
   styleUrl: './detail-product.component.scss'
