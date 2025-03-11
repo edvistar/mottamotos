@@ -42,10 +42,10 @@ export class LandingPageComponent implements OnInit{
       },
     });
   }
-  getPrincipalImage(images: any[]): string {
+  getPrincipalImage(imagenes: any[]): string {
     // Busca la imagen principal o devuelve la primera
-    const principal = images.find(image => image.esPrincipal);
-    return principal ? principal.imageUrl : images[0]?.imageUrl || 'assets/no-image.png';
+    const principal = imagenes.find(image => image.esPrincipal);
+    return principal ? principal.imageUrl : imagenes[0]?.imageUrl || 'assets/no-image.png';
   }
 
   ProductDetalle(productId: number){

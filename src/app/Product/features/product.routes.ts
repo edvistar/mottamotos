@@ -12,6 +12,11 @@ export default [
       .then(m => m.CreateProductComponent), // Ensure correct named export
   },
   {
+    path: 'create-product/:id',
+    loadComponent: () => import('./create-product/create-product.component')
+      .then(m => m.CreateProductComponent), // Ensure correct named export
+  },
+  {
     path: 'detail/:id',
     loadComponent: () => import('./detail-product/detail-product.component')
       .then(m => m.DetailProductComponent), // Ensure correct named export

@@ -13,13 +13,14 @@ import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-product',
   standalone: true,
   imports: [MatCardModule, MatFormFieldModule,
     MatSelectModule, ReactiveFormsModule, NgFor, NgIf,
-    MatInputModule
+    MatInputModule, MatDialogModule
   ],
   templateUrl: './create-product.component.html',
   styleUrl: './create-product.component.scss'
@@ -33,7 +34,7 @@ images: string[] = []; // Lista de rutas de imágenes seleccionadas para previsu
 
 @Input() datosProduct: Marca | null = null;
   formProduct: FormGroup;
-  titulo: string = "Agregar";
+  titulo: string = "Crear";
   nombreBoton: string = "Guardar";
   errorMessage: string | undefined;
   previewUrls: any;
@@ -44,7 +45,8 @@ images: string[] = []; // Lista de rutas de imágenes seleccionadas para previsu
     private route: ActivatedRoute,
     private router: Router,
     private _marcaService: MarcaService,
-    private _categoryService: CategoryService
+    private _categoryService: CategoryService,
+    private dialog: MatDialog
   ){
     this.formProduct = this.fb.group({
       name: ['', Validators.required],
@@ -135,12 +137,54 @@ images: string[] = []; // Lista de rutas de imágenes seleccionadas para previsu
     }
   }
 
-
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id) {
+        this.productId = Number(id);
+        this.cargarProducto(this.productId);
+        this.titulo = "Editar Producto";
+        this.nombreBoton = "Actualizar";
+      } else {
+        this.titulo = "Crear Producto";
+        this.nombreBoton = "Guardar";
+      }
+    });
+
     this.obtenerMarcas();
     this.obtenerCategorias();
   }
 
+
+  cargarProducto(id: number) {
+    this._productService.getProductById(id).subscribe({
+      next: (response) => {
+        if (response.isExitoso && response.resultado) {
+          console.log("Producto obtenido:", response.resultado);
+
+          // Llenar el formulario con los datos obtenidos
+          this.formProduct.patchValue({
+            name: response.resultado.name,
+            serialNumber: response.resultado.serialNumber,
+            description: response.resultado.description,
+            status: response.resultado.status,
+            offer: response.resultado.offer,
+            price: response.resultado.price,
+            cost: response.resultado.cost,
+            categoriaId: response.resultado.categoriaId,
+            marcaId: response.resultado.marcaId,
+          });
+
+          console.log("Formulario actualizado:", this.formProduct.value);
+        } else {
+          console.warn("No se encontraron datos del producto.");
+        }
+      },
+      error: (e) => {
+        console.error("Error al obtener el producto:", e);
+      }
+    });
+  }
 
   obtenerMarcas(){
       this._marcaService.lista().subscribe({

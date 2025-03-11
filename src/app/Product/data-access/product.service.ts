@@ -17,21 +17,18 @@ export class ProductService {
   }
   getProductById(id: number): Observable<ApiResponse>{
     return this.http.get<ApiResponse>(`${this.baseUrl}${id}`);
-    }
-    editar(request: Product): Observable<ApiResponse>;
-    editar(request: FormData): Observable<ApiResponse>;
-    editar(request: Product | FormData): Observable<ApiResponse> {
-      return this.http.post<ApiResponse>(`${this.baseUrl}`, request);
-    }
-    crear(request: Product): Observable<ApiResponse>;
-    crear(request: FormData): Observable<ApiResponse>;
-    crear(request: Product | FormData): Observable<ApiResponse> {
-      return this.http.post<ApiResponse>(`${this.baseUrl}`, request);
-    }
-
-
-
+  }
+  editar(request: Product): Observable<ApiResponse>;
+  editar(request: FormData): Observable<ApiResponse>;
+  editar(request: Product | FormData): Observable<ApiResponse> {
+    return this.http.put<ApiResponse>(`${this.baseUrl}`, request);
+  }
+  crear(request: Product): Observable<ApiResponse>;
+  crear(request: FormData): Observable<ApiResponse>;
+  crear(request: Product | FormData): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(`${this.baseUrl}`, request);
+  }
   eliminar(id: number): Observable<ApiResponse>{
       return this.http.delete<ApiResponse>(`${this.baseUrl}${id}`)
-    }
+  }
 }

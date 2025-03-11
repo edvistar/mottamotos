@@ -8,6 +8,9 @@ import { StorageService } from '../../../shared/data-access/storage.service';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatTableModule} from '@angular/material/table';
+import { Product } from '../interfaces/product';
+import Swal from 'sweetalert2';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
@@ -15,7 +18,7 @@ import {MatTableModule} from '@angular/material/table';
   standalone: true,
   imports: [MatCardModule, MatIconModule,
     MatDividerModule, MatPaginatorModule,
-    MatTableModule
+    MatTableModule, RouterModule
   ],
   templateUrl: './list-product.component.html',
   styleUrl: './list-product.component.scss'
@@ -39,7 +42,8 @@ export class ListProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.obtenerProductos();
+    this.obtenerProductos();// Llamar a la función para obtener los datos del producto
+
   }
   nuevoProducto(){
     this.router.navigate(['/layout/product/create-product']);
@@ -62,6 +66,48 @@ export class ListProductComponent implements OnInit {
         console.error("Error en Obtener Productos:", e);
       }
    });
+  }
+
+  editarProduct(producto: Product) {
+    const productId = producto.id;
+    console.log("Producto ID:", productId);
+
+    this.router.navigate(['/layout/product/create-product', productId]).then(success => {
+      if (success) {
+        console.log("Navegación exitosa a la edición del producto.");
+      } else {
+        console.error("Error en la navegación.");
+      }
+    });
+  }
+
+  removerProduct(product: Product){
+
+    Swal.fire({
+     title: 'Desea eliminar el Product',
+     text: product.name,
+     icon: 'warning',
+     confirmButtonColor: '#3085d6',
+     confirmButtonText: 'Si, Eliminar',
+     showCancelButton: true,
+     cancelButtonColor: '#d33',
+     cancelButtonText: 'No'
+    }).then((resultado)=> {
+      if(resultado.isConfirmed){
+        this._productService.eliminar(product.id).subscribe({
+            next: (data) =>{
+              if(data.isExitoso){
+                this._storageService.mostrarAlerta('El Producto fue eliminado', 'Completo');
+                this.obtenerProductos();
+              }
+              else{
+                this._storageService.mostrarAlerta('No se pudo eliminar el producto', 'Error!');
+              }
+            },
+          error: (e) => {}
+        });
+      }
+    });
   }
 
 }
