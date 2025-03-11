@@ -14,12 +14,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import { Imagen } from '../interfaces/imagen';
 
 @Component({
   selector: 'app-create-product',
   standalone: true,
   imports: [MatCardModule, MatFormFieldModule,
-    MatSelectModule, ReactiveFormsModule, NgFor, NgIf,
+    MatSelectModule, ReactiveFormsModule, NgFor,FormsModule,
     MatInputModule, MatDialogModule
   ],
   templateUrl: './create-product.component.html',
@@ -30,7 +32,10 @@ marcas: Marca[] = [];
 category: Category[] = [];
 productId:number | null = null;
 selectedFiles: File[] = []; // Array para almacenar los archivos seleccionados
-images: string[] = []; // Lista de rutas de imágenes seleccionadas para previsualización
+existingImages: Imagen[] = []; // Imágenes desde el backend
+previewImages: string[] = [];
+imagenesAEliminar: number[] = []; // Almacena los IDs de imágenes seleccionadas para eliminar
+
 
 @Input() datosProduct: Marca | null = null;
   formProduct: FormGroup;
@@ -66,76 +71,144 @@ images: string[] = []; // Lista de rutas de imágenes seleccionadas para previsu
     const input = event.target as HTMLInputElement;
 
     if (input.files) {
-      // Asignamos directamente los archivos seleccionados al array selectedFiles
       this.selectedFiles = Array.from(input.files);
 
-      // Generamos las miniaturas para previsualización si es necesario
-      this.images = this.selectedFiles.map((file) => URL.createObjectURL(file));
+      // Generar URLs para previsualización
+      this.previewImages = this.selectedFiles.map((file) => URL.createObjectURL(file));
 
-      // Puedes ver las imágenes cargadas para depurar
-      console.log("Imágenes seleccionadas:", this.selectedFiles);
+      console.log("Imágenes nuevas seleccionadas:", this.previewImages);
     }
   }
 
 
+  // CrearModificarProduct() {
+  //   console.log("Imágenes seleccionadas dentro de crear modificar:", this.selectedFiles);
+
+  //   if (this.formProduct.valid) {
+  //     const formData = new FormData();
+
+  //     // Agregar los campos del producto
+  //     formData.append("id", this.productId ? this.productId.toString() : "0");
+  //     formData.append("name", this.formProduct.value.name);
+  //     formData.append("serialNumber", this.formProduct.value.serialNumber);
+  //     formData.append("description", this.formProduct.value.description);
+  //     formData.append("status", this.formProduct.value.status);
+  //     formData.append("offer", this.formProduct.value.offer.toString());
+  //     formData.append("price", this.formProduct.value.price.toString());
+  //     formData.append("cost", this.formProduct.value.cost.toString());
+  //     formData.append("categoriaId", this.formProduct.value.categoriaId.toString());
+  //     formData.append("marcaId", this.formProduct.value.marcaId.toString());
+
+  //     // Aseguramos que `selectedFiles` contiene archivos antes de agregarlos
+  //     if (this.selectedFiles && this.selectedFiles.length > 0) {
+  //       this.selectedFiles.forEach((file) => {
+  //         formData.append("archivos", file); // "imagenes[]" debe coincidir con el nombre esperado en el backend
+  //         console.log("Enviando archivo:", file.name);
+  //       });
+  //     } else {
+  //       console.warn("No hay archivos seleccionados.");
+  //     }
+  //     // Enviar al backend
+  //     if (this.productId) {
+  //       // Editar producto
+  //       this._productService.editar(formData).subscribe({
+  //         next: () => {
+  //           this._storageService.mostrarAlerta('Producto actualizado con éxito!', 'Completo');
+  //           this.router.navigate(['/layout/product/list-product']);
+  //         },
+  //         error: (e) => {
+  //           console.error("Error al actualizar:", e);
+  //           this._storageService.mostrarAlerta('Error al actualizar producto', 'Error!');
+  //         }
+  //       });
+  //     } else {
+  //       // Crear nuevo producto
+  //       this._productService.crear(formData).subscribe({
+  //         next: () => {
+  //         console.log("formData",formData)
+  //           this._storageService.mostrarAlerta('Producto creado con éxito!', 'Completo');
+  //           this.router.navigate(['/layout/product/list-product']);
+  //         },
+  //         error: (e) => {
+  //           console.error("Error al crear:", e);
+  //           this._storageService.mostrarAlerta('Error al crear producto', 'Error!');
+  //         }
+  //       });
+  //     }
+  //   } else {
+  //     this.errorMessage = 'Formulario inválido. Corrige los errores e intenta nuevamente.';
+  //   }
+  // }
   CrearModificarProduct() {
     console.log("Imágenes seleccionadas dentro de crear modificar:", this.selectedFiles);
+    console.log("Imágenes a eliminar:", this.imagenesAEliminar); // Para verificar
 
     if (this.formProduct.valid) {
-      const formData = new FormData();
+        const formData = new FormData();
 
-      // Agregar los campos del producto
-      formData.append("id", this.productId ? this.productId.toString() : "0");
-      formData.append("name", this.formProduct.value.name);
-      formData.append("serialNumber", this.formProduct.value.serialNumber);
-      formData.append("description", this.formProduct.value.description);
-      formData.append("status", this.formProduct.value.status);
-      formData.append("offer", this.formProduct.value.offer.toString());
-      formData.append("price", this.formProduct.value.price.toString());
-      formData.append("cost", this.formProduct.value.cost.toString());
-      formData.append("categoriaId", this.formProduct.value.categoriaId.toString());
-      formData.append("marcaId", this.formProduct.value.marcaId.toString());
+        // Agregar los campos del producto
+        formData.append("id", this.productId ? this.productId.toString() : "0");
+        formData.append("name", this.formProduct.value.name);
+        formData.append("serialNumber", this.formProduct.value.serialNumber);
+        formData.append("description", this.formProduct.value.description);
+        formData.append("status", this.formProduct.value.status);
+        formData.append("offer", this.formProduct.value.offer.toString());
+        formData.append("price", this.formProduct.value.price.toString());
+        formData.append("cost", this.formProduct.value.cost.toString());
+        formData.append("categoriaId", this.formProduct.value.categoriaId.toString());
+        formData.append("marcaId", this.formProduct.value.marcaId.toString());
 
-      // Aseguramos que `selectedFiles` contiene archivos antes de agregarlos
-      if (this.selectedFiles && this.selectedFiles.length > 0) {
-        this.selectedFiles.forEach((file) => {
-          formData.append("archivos", file); // "imagenes[]" debe coincidir con el nombre esperado en el backend
-          console.log("Enviando archivo:", file.name);
+        // Aseguramos que `selectedFiles` contiene archivos antes de agregarlos
+        if (this.selectedFiles && this.selectedFiles.length > 0) {
+            this.selectedFiles.forEach((file) => {
+                formData.append("archivos", file);
+                console.log("Enviando archivo:", file.name);
+            });
+        } else {
+            console.warn("No hay archivos seleccionados.");
+        }
+
+        // ✅ Agregar imágenes a eliminar (convertidas en JSON)
+        if (this.imagenesAEliminar && this.imagenesAEliminar.length > 0) {
+          this.imagenesAEliminar.forEach(id => {
+            formData.append("imagenesAEliminar", id.toString());
         });
-      } else {
-        console.warn("No hay archivos seleccionados.");
-      }
-      // Enviar al backend
-      if (this.productId) {
-        // Editar producto
-        this._productService.editar(formData).subscribe({
-          next: () => {
-            this._storageService.mostrarAlerta('Producto actualizado con éxito!', 'Completo');
-            this.router.navigate(['/layout/ListProduct']);
-          },
-          error: (e) => {
-            console.error("Error al actualizar:", e);
-            this._storageService.mostrarAlerta('Error al actualizar producto', 'Error!');
-          }
-        });
-      } else {
-        // Crear nuevo producto
-        this._productService.crear(formData).subscribe({
-          next: () => {
-          console.log("formData",formData)
-            this._storageService.mostrarAlerta('Producto creado con éxito!', 'Completo');
-            this.router.navigate(['/layout/product/list-product']);
-          },
-          error: (e) => {
-            console.error("Error al crear:", e);
-            this._storageService.mostrarAlerta('Error al crear producto', 'Error!');
-          }
-        });
-      }
+
+        } else {
+            formData.append("imagenesAEliminar", "[]"); // Enviar array vacío si no hay imágenes a eliminar
+        }
+
+        // Enviar al backend
+        if (this.productId) {
+            // Editar producto
+            this._productService.editar(formData).subscribe({
+                next: () => {
+                    this._storageService.mostrarAlerta('Producto actualizado con éxito!', 'Completo');
+                    this.router.navigate(['/layout/product/list-product']);
+                },
+                error: (e) => {
+                    console.error("Error al actualizar:", e);
+                    this._storageService.mostrarAlerta('Error al actualizar producto', 'Error!');
+                }
+            });
+        } else {
+            // Crear nuevo producto
+            this._productService.crear(formData).subscribe({
+                next: () => {
+                    console.log("formData", formData);
+                    this._storageService.mostrarAlerta('Producto creado con éxito!', 'Completo');
+                    this.router.navigate(['/layout/product/list-product']);
+                },
+                error: (e) => {
+                    console.error("Error al crear:", e);
+                    this._storageService.mostrarAlerta('Error al crear producto', 'Error!');
+                }
+            });
+        }
     } else {
-      this.errorMessage = 'Formulario inválido. Corrige los errores e intenta nuevamente.';
+        this.errorMessage = 'Formulario inválido. Corrige los errores e intenta nuevamente.';
     }
-  }
+}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -154,15 +227,12 @@ images: string[] = []; // Lista de rutas de imágenes seleccionadas para previsu
     this.obtenerMarcas();
     this.obtenerCategorias();
   }
-
-
   cargarProducto(id: number) {
     this._productService.getProductById(id).subscribe({
       next: (response) => {
         if (response.isExitoso && response.resultado) {
           console.log("Producto obtenido:", response.resultado);
 
-          // Llenar el formulario con los datos obtenidos
           this.formProduct.patchValue({
             name: response.resultado.name,
             serialNumber: response.resultado.serialNumber,
@@ -173,9 +243,17 @@ images: string[] = []; // Lista de rutas de imágenes seleccionadas para previsu
             cost: response.resultado.cost,
             categoriaId: response.resultado.categoriaId,
             marcaId: response.resultado.marcaId,
+            imagenes: response.resultado.imagenes ? response.resultado.imagenes.map((img: any) => img.ImageUrl) : []
           });
 
-          console.log("Formulario actualizado:", this.formProduct.value);
+          // Cargar imágenes del backend
+          this.existingImages = response.resultado.imagenes.map((img: any) => ({
+            ...img,
+            seleccionado: false // Para checkboxes
+          }));
+
+          console.log("Primera imagen en existingImages:", this.existingImages[0]);
+
         } else {
           console.warn("No se encontraron datos del producto.");
         }
@@ -185,6 +263,22 @@ images: string[] = []; // Lista de rutas de imágenes seleccionadas para previsu
       }
     });
   }
+
+  actualizarListaEliminar(imagen: Imagen) {
+    imagen.seleccionado = !imagen.seleccionado; // Cambiar el estado del checkbox
+
+    if (imagen.seleccionado) {
+      if (!this.imagenesAEliminar.includes(imagen.id)) {
+        this.imagenesAEliminar.push(imagen.id);
+      }
+    } else {
+      this.imagenesAEliminar = this.imagenesAEliminar.filter(id => id !== imagen.id);
+    }
+
+    console.log("Lista de imágenes a eliminar:", this.imagenesAEliminar);
+  }
+
+
 
   obtenerMarcas(){
       this._marcaService.lista().subscribe({
