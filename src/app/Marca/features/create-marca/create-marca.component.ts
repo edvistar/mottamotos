@@ -29,6 +29,7 @@ export class CreateMarcaComponent {
     nombreBoton: string = "Guardar";
     errorMessage: string | undefined;
     previewUrls: any;
+    previewImage: string | ArrayBuffer | null = null;
 
     constructor(private fb: FormBuilder,
       private _storageService: StorageService,
@@ -114,7 +115,51 @@ export class CreateMarcaComponent {
       }
     }
 
-
     ngOnInit(): void {
+      this.route.paramMap.subscribe(params => {
+        const id = params.get('id');
+        if (id) {
+          this.marcaId = Number(id);
+          this.cargarMarca(this.marcaId);
+          this.titulo = "Editar Marca";
+          this.nombreBoton = "Actualizar";
+        } else {
+          this.titulo = "Crear Marca";
+          this.nombreBoton = "Guardar";
+        }
+      });
+}
+cargarMarca(id: number) {
+  this._marcaService.getMarcaById(id).subscribe({
+    next: (response) => {
+      console.log(response);
+      if (response.isExitoso && response.resultado) {
+        console.log("Producto obtenido:", response.resultado);
+        console.log("URL de imagen:", response.resultado.imageUrl);
+        this.formMarca.patchValue({
+          name: response.resultado.name,
+          description: response.resultado.description,
+          status: response.resultado.status,
+          imageUrl: response.resultado.imageUrl
+        });
+      } else {
+        console.warn("No se encontraron datos de la marca.");
+      }
+    },
+    error: (e) => {
+      console.error("Error al obtener la marca:", e);
     }
+  });
+}
+onImageSelected(event: Event) {
+  const file = (event.target as HTMLInputElement).files?.[0];
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.previewImage = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+}
 }

@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-marca',
@@ -36,13 +37,13 @@ export class ListMarcaComponent {
     }
 
     ngOnInit(): void {
-      this.obtenerProductos();
+      this.obtenerMarcas();
     }
     nuevoMarca(){
       this.router.navigate(['/layout/marca/create-marca']);
     }
 
-    obtenerProductos(){
+    obtenerMarcas(){
       this._marcaService.lista().subscribe({
         next: (data) => {
           if (data.isExitoso) {
@@ -60,4 +61,44 @@ export class ListMarcaComponent {
         }
      });
     }
+ editarMarca(marca: Marca) {
+    const marcaId = marca.id;
+    console.log("Marca ID:", marcaId);
+
+    this.router.navigate(['/layout/marca/create-marca', marcaId]).then(success => {
+      if (success) {
+        console.log("Navegación exitosa a la edición de la marca.");
+      } else {
+        console.error("Error en la navegación.");
+      }
+    });
+  }
+    removerMarca(marca: Marca){
+
+        Swal.fire({
+         title: 'Desea eliminar laMarca',
+         text: marca.name,
+         icon: 'warning',
+         confirmButtonColor: '#3085d6',
+         confirmButtonText: 'Si, Eliminar',
+         showCancelButton: true,
+         cancelButtonColor: '#d33',
+         cancelButtonText: 'No'
+        }).then((resultado)=> {
+          if(resultado.isConfirmed){
+            this._marcaService.eliminar(marca.id).subscribe({
+                next: (data) =>{
+                  if(data.isExitoso){
+                    this._storageService.mostrarAlerta('La Marca fue eliminada', 'Completo');
+                    this.obtenerMarcas();
+                  }
+                  else{
+                    this._storageService.mostrarAlerta('No se pudo eliminar la Marca', 'Error!');
+                  }
+                },
+              error: (e) => {}
+            });
+          }
+        });
+      }
 }

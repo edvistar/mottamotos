@@ -89,11 +89,29 @@
       </mat-card-content>
     </mat-card>
   </form>
-
-
  <!-- Vista previa de imágenes -->
- <div *ngFor="let item of existingImages" class="image-container">
-  <img [src]="item.imageUrl" alt="Imagen del producto" class="preview-image">
-  <input type="checkbox" (change)="actualizarListaEliminar(item)">
+<!-- <div *ngIf="formProduct.get('imagenes')?.value.length">
+  <div *ngFor="let img of formProduct.get('imagenes')?.value" class="image-container">
+    <img [src]="img" alt="Imagen actual" class="preview-image">
+    <input type="checkbox" (change)="actualizarListaEliminar(img)">
+  </div>
+</div> -->
+<div *ngIf="formProduct.get('imagenes')?.value.length">
+  <div *ngFor="let img of formProduct.get('imagenes')?.value" class="image-container">
+    <img [src]="img.imageUrl" alt="Imagen actual" class="preview-image">
+    <!-- Checkbox con el ID correcto -->
+    <input type="checkbox" (change)="actualizarListaEliminar($event, img.id)">
+     <!-- Radio button para seleccionar la imagen principal -->
+     <input type="radio"
+    name="imagenPrincipal"
+    [value]="img.id"
+    [checked]="img.id === formProduct.get('imagenPrincipalId')?.value"
+    (change)="seleccionarImagenPrincipal(img.id)">
+
+  </div>
 </div>
+
 </div>
+
+
+
