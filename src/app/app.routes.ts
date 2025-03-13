@@ -11,6 +11,11 @@ export const routes: Routes = [
     loadChildren: () => import('./Marca/features/marca.routes')
       .then(m => m.default) // Ensure 'ProductRoutes' is properly exported
   },
+  {
+    path: 'category',
+    loadChildren: () => import('./Category/features/category.routes')
+      .then(m => m.default) // Ensure 'ProductRoutes' is properly exported
+  },
 
   {
     path: 'login',
