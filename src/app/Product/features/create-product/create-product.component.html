@@ -1,4 +1,5 @@
-<div class="container" fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="16px">
+<div class="container" >
+  <div fxLayout="row" fxLayoutGap="16px">
   <!-- Formulario -->
   <form [formGroup]="formProduct" fxFlex="60%">
     <mat-card class="form-card">
@@ -8,7 +9,7 @@
         </h1>
       </mat-card-header>
 
-      <mat-card-content>
+      <mat-card-content  class="example-full-width">
         <div fxLayout="row wrap" fxLayoutGap="16px">
           <mat-form-field fxFlex="45%" appearance="fill">
             <mat-label>Nombre de Producto</mat-label>
@@ -19,14 +20,12 @@
             <mat-label>Serial del Producto</mat-label>
             <input matInput formControlName="serialNumber" placeholder="Ingrese el Número de serie">
           </mat-form-field>
-        </div>
 
-        <mat-form-field fxFlex="100%" appearance="fill">
-          <mat-label>Descripción del Producto</mat-label>
-          <textarea matInput formControlName="description" placeholder="Ingrese la descripción"></textarea>
-        </mat-form-field>
-
-        <div fxLayout="row wrap" fxLayoutGap="16px">
+          <mat-form-field fxFlex="45%" appearance="fill">
+            <mat-label>Precio del Producto</mat-label>
+            <input matInput formControlName="price" type="number" step="0.01" placeholder="Ingrese 
+          el precio">
+          </mat-form-field>
           <mat-form-field fxFlex="45%" appearance="fill">
             <mat-label>Producto en Oferta</mat-label>
             <mat-select formControlName="offer">
@@ -42,19 +41,12 @@
               <mat-option [value]="false">Inactivo</mat-option>
             </mat-select>
           </mat-form-field>
-
-          <mat-form-field fxFlex="45%" appearance="fill">
-            <mat-label>Precio del Producto</mat-label>
-            <input matInput formControlName="price" type="number" step="0.01" placeholder="Ingrese el precio">
-          </mat-form-field>
-
+                    
           <mat-form-field fxFlex="45%" appearance="fill">
             <mat-label>Costo del Producto</mat-label>
-            <input matInput formControlName="cost" type="number" step="0.01" placeholder="Ingrese el costo">
+            <input matInput formControlName="cost" type="number" step="0.01" placeholder="Ingrese el 
+          costo">
           </mat-form-field>
-        </div>
-
-        <div fxLayout="row wrap" fxLayoutGap="16px">
           <mat-form-field fxFlex="45%" appearance="fill">
             <mat-label>Selecciona una Categoría</mat-label>
             <mat-select formControlName="categoriaId">
@@ -63,7 +55,6 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-
           <mat-form-field fxFlex="45%" appearance="fill">
             <mat-label>Selecciona una Marca</mat-label>
             <mat-select formControlName="marcaId">
@@ -72,45 +63,72 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
+          <mat-form-field fxFlex="100%" appearance="fill">
+            <mat-label>Descripción del Producto</mat-label>
+            <textarea matInput formControlName="description" placeholder="Ingrese la descripción"></textarea>
+          </mat-form-field>
         </div>
-
+        
+        <div  class="col-12" >
           <!-- Imágenes nuevas seleccionadas por el usuario -->
         <div *ngFor="let img of previewImages" class="image-container">
           <img [src]="img" alt="Previsualización" class="preview-image">
         </div>
-        <div class="file-container">
+        <div class="file-container col-md-6" >
           <button mat-raised-button color="primary" (click)="fileInput.click()">Seleccionar imágenes</button>
           <input #fileInput type="file" multiple (change)="onFileSelected($event)" hidden />
         </div>
 
-        <div class="button-container">
+        <div class="button-container col-md-6">
           <button mat-raised-button color="primary" (click)="CrearModificarProduct()">{{ nombreBoton }}</button>
+        </div>
+      </div>
+
+        <div  fxLayout="row wrap" >
+          <div *ngIf="formProduct.get('imagenes')?.value.length" fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start center" class="image-container">
+            <div *ngFor="let img of formProduct.get('imagenes')?.value" class="image-wrapper">
+              <img [src]="img.imageUrl" alt="Imagen actual" class="preview-image">
+              <div class="options">
+                 <!-- Checkbox con el ID correcto -->
+                 <input type="checkbox" (change)="actualizarListaEliminar($event, img.id)"    class="ckeckbox">
+                  <!-- Radio button para seleccionar la imagen principal -->
+                  <input type="radio"
+                 name="imagenPrincipal"
+                 [value]="img.id"
+                 [checked]="img.id === formProduct.get('imagenPrincipalId')?.value"
+                 (change)="seleccionarImagenPrincipal(img.id)">
+              </div>
+            
+            </div>
+          </div>
         </div>
       </mat-card-content>
     </mat-card>
   </form>
- <!-- Vista previa de imágenes -->
-<!-- <div *ngIf="formProduct.get('imagenes')?.value.length">
-  <div *ngFor="let img of formProduct.get('imagenes')?.value" class="image-container">
-    <img [src]="img" alt="Imagen actual" class="preview-image">
-    <input type="checkbox" (change)="actualizarListaEliminar(img)">
-  </div>
-</div> -->
-<div *ngIf="formProduct.get('imagenes')?.value.length">
-  <div *ngFor="let img of formProduct.get('imagenes')?.value" class="image-container">
-    <img [src]="img.imageUrl" alt="Imagen actual" class="preview-image">
-    <!-- Checkbox con el ID correcto -->
-    <input type="checkbox" (change)="actualizarListaEliminar($event, img.id)">
-     <!-- Radio button para seleccionar la imagen principal -->
-     <input type="radio"
-    name="imagenPrincipal"
-    [value]="img.id"
-    [checked]="img.id === formProduct.get('imagenPrincipalId')?.value"
-    (change)="seleccionarImagenPrincipal(img.id)">
+    <!-- Vista previa de imágenes -->
+    <!-- <div *ngIf="formProduct.get('imagenes')?.value.length">
+      <div *ngFor="let img of formProduct.get('imagenes')?.value" class="image-container">
+        <img [src]="img" alt="Imagen actual" class="preview-image">
+        <input type="checkbox" (change)="actualizarListaEliminar(img)">
+      </div>
+    </div> -->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
   </div>
-</div>
-
 </div>
 
 

@@ -1,33 +1,82 @@
 .preview-container {
   margin-top: 10px;
-
-  .image-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); // Ajusta el tamaño de las miniaturas
-    gap: 10px;
-    padding: 10px;
-    justify-content: center;
-  }
-
-  .preview-image {
-    width: 100px; // Tamaño de la miniatura
-    height: 100px;
-    object-fit: cover; // Para que la imagen mantenga proporciones sin deformarse
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
-
-    &:hover {
-      transform: scale(1.1); // Efecto de zoom al pasar el mouse
-    }
-  }
 }
+
+  // .image-grid {
+    // display: grid;
+    // // grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); // Ajusta el tamaño de las miniaturas
+    // gap: 10px;
+    // padding: 10px;
+    // justify-content: center;
+  // }
+
+  // .preview-image {
+    // width: 100px; // Tamaño de la miniatura
+    // height: 100px;
+    // object-fit: cover; // Para que la imagen mantenga proporciones sin deformarse
+    // border-radius: 5px;
+    // border: 1px solid #ddd;
+    // box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    // transition: transform 0.2s ease-in-out;
+
+    // &:hover {
+      // transform: scale(1.1); // Efecto de zoom al pasar el mouse
+    // }
+  // }
+// }
+// .preview-image {
+  // width: 150px; // Ajusta el ancho según sea necesario
+  // height: 150px; // Ajusta la altura para mantener proporciones
+  // object-fit: cover; // Para que la imagen se recorte y llene el cuadro sin deformarse
+  // border-radius: 8px; // Bordes redondeados opcionales
+  // margin: 5px; // Espaciado entre imágenes
+  // box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); // Sombra opcional para mejor apariencia
+// }
+h1{
+  text-align: center;
+  color: rgb(5, 133, 244);
+}
+button{
+  margin: 1%;
+
+}
+
+mat-form-field{
+  align-items: center;
+  margin: 5px;
+
+ }
+ .container{
+  width: 100%;
+ }
+ .example-full-width {
+  width: 100%;
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap; /* Permite que pasen a otra línea si no caben */
+  gap: 10px;
+  justify-content: start; /* Alinea las imágenes desde la izquierda */
+  align-items: center; /* Centra los elementos verticalmente */
+}
+
+.image-wrapper {
+  display: flex;
+  flex-direction: column; /* Alinea la imagen y el checkbox en columna */
+  align-items: center; /* Centra dentro del div */
+}
+
 .preview-image {
-  width: 150px; // Ajusta el ancho según sea necesario
-  height: 150px; // Ajusta la altura para mantener proporciones
-  object-fit: cover; // Para que la imagen se recorte y llene el cuadro sin deformarse
-  border-radius: 8px; // Bordes redondeados opcionales
-  margin: 5px; // Espaciado entre imágenes
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); // Sombra opcional para mejor apariencia
+  width: 100px; /* Ajusta según necesidad */
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.options {
+  display: flex;
+  flex-direction:row; /* Coloca checkbox y radio uno encima del otro */
+  gap: 5px; /* Espacio entre checkbox y radio */
 }

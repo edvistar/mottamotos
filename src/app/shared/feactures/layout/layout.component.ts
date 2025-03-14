@@ -12,9 +12,12 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [MatToolbarModule,
-    MatIconModule, MatSidenavModule,
-    MatListModule, MatButtonModule,
+  imports: [
+    MatToolbarModule,
+    MatIconModule, 
+    MatSidenavModule,
+    MatListModule, 
+    MatButtonModule,
     RouterModule
   ],
   templateUrl: './layout.component.html',

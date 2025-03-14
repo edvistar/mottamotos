@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from './services/login.service';
@@ -7,12 +7,18 @@ import { Login } from '../../interfaces/login';
 import { StorageService } from '../../../shared/data-access/storage.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatFormFieldModule,
-    ReactiveFormsModule, MatInputModule,
+  imports: [
+    MatFormFieldModule,
+    ReactiveFormsModule, 
+    MatInputModule,
+    MatButtonModule, 
+    MatIconModule
 
 
   ],
@@ -21,7 +27,7 @@ import {MatInputModule} from '@angular/material/input';
 })
 export class LoginComponent {
   formLogin: FormGroup;
-  ocultarPassword:boolean = true;
+  ocultarPassword=signal(true);
   mostrarLoading: boolean = false;
 
   constructor (private fb: FormBuilder,
@@ -67,5 +73,10 @@ export class LoginComponent {
   }
   BackHome(): void {
     this.router.navigate(['/']);
+  }
+
+  clickEvent(event: MouseEvent) {
+    this.ocultarPassword.set(!this.ocultarPassword());
+    event.stopPropagation();
   }
 }

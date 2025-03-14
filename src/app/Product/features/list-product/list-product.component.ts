@@ -11,14 +11,22 @@ import {MatTableModule} from '@angular/material/table';
 import { Product } from '../interfaces/product';
 import Swal from 'sweetalert2';
 import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
   selector: 'app-list-product',
   standalone: true,
-  imports: [MatCardModule, MatIconModule,
-    MatDividerModule, MatPaginatorModule,
-    MatTableModule, RouterModule
+  imports: [
+    MatCardModule, 
+    MatIconModule,
+    MatDividerModule, 
+    MatPaginatorModule,
+    MatTableModule, 
+    RouterModule,
+    MatButtonModule,
+    MatIconModule
+    
   ],
   templateUrl: './list-product.component.html',
   styleUrl: './list-product.component.scss'

@@ -9,13 +9,25 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { NgFor, NgIf } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-create-marca',
   standalone: true,
-  imports: [MatCardModule, MatFormFieldModule,
-    MatSelectModule, ReactiveFormsModule, NgFor, NgIf,
-    MatInputModule],
+  imports: [MatCardModule, 
+    MatFormFieldModule,
+    MatSelectModule, 
+    ReactiveFormsModule, 
+    NgFor, 
+    NgIf,
+    MatInputModule,
+    MatIconModule, 
+    MatListModule, 
+    MatButtonModule,
+
+  ],
   templateUrl: './create-marca.component.html',
   styleUrl: './create-marca.component.scss'
 })

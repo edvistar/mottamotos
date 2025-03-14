@@ -23,6 +23,9 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 // Otros módulos
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-create-product',
@@ -36,7 +39,11 @@ import { NgFor, NgIf } from '@angular/common';
     NgIf,
     FormsModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule,
+MatIconModule, 
+MatListModule, 
+MatButtonModule,
   ],
   templateUrl: './create-product.component.html',
   styleUrl: './create-product.component.scss'

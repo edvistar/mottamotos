@@ -9,13 +9,24 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import Swal from 'sweetalert2';
-
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-list-marca',
   standalone: true,
-  imports: [MatCardModule, MatIconModule,
-      MatDividerModule, MatPaginatorModule,
-      MatTableModule],
+  imports: [
+      MatCardModule, 
+      MatIconModule,
+      MatDividerModule, 
+      MatPaginatorModule,
+      MatTableModule,
+      MatInputModule,
+      MatIconModule, 
+      MatListModule, 
+      RouterModule,
+
+    ],
   templateUrl: './list-marca.component.html',
   styleUrl: './list-marca.component.scss'
 })

@@ -33,30 +33,29 @@
                     <mat-icon matSuffix>person</mat-icon>
                   </mat-form-field>
                 </div>
-                <div class="col-12">
+                <div class="col-12 container">
                   <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Password</mat-label>
-                    <input [type]="ocultarPassword? 'password' : 'text'" formControlName="password"
+                    <input [type]="ocultarPassword()? 'password' : 'text'" formControlName="password"
                     matInput autocomplete="off">
-                      <button mat-icon-button matSuffix (click)="ocultarPassword = !ocultarPassword"
+                      <button  mat-icon-button
+                      matSuffix
+                      (click)="clickEvent($event)"
+                      [attr.aria-label]="'Hide password'"
+                      [attr.aria-pressed]="ocultarPassword()"
                       type="button">
-                        <mat-icon matSuffix>{{ocultarPassword ? 'visibility_off': 'visibility'}}</mat-icon>
+                        <mat-icon matSuffix>{{ocultarPassword() ? 'visibility_off': 'visibility'}}</mat-icon>
                       </button>
                   </mat-form-field>
                 </div>
+
                 <div class="col-12">
-                  <div class="d-grid">
-                    <button class="btn bsb-btn-xl btn-danger" type="submit" [disabled]="formLogin.invalid">
-                      iniciar Sesion
+                    <button mat-stroked-button type="submit" [disabled]="formLogin.invalid" class="custom-text">
+                      <mat-icon>account_circle</mat-icon> Iniciar Sesion
                     </button>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="d-grid">
-                    <button mat-raised-button color="primary" (click)="BackHome()">
-                      Volver al Catalogo
+                    <button mat-stroked-button (click)="BackHome()" class="custom-text">
+                      <mat-icon >keyboard_backspace</mat-icon> Volver al Catalogo
                     </button>
-                  </div>
                 </div>
               </div>
             </form>

@@ -7,6 +7,8 @@ import { NgIf, NgFor, NgClass } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NavbarComponent } from '../../../shared/feactures/navbar/navbar.component';
 import { FooterComponent } from '../../../shared/feactures/footer/footer.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-detail-product',
@@ -15,7 +17,9 @@ import { FooterComponent } from '../../../shared/feactures/footer/footer.compone
     MatCardModule, NgIf, NgFor, NgClass,
     MatProgressSpinnerModule,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    MatButtonModule,
+    MatIconModule
   ],
   templateUrl: './detail-product.component.html',
   styleUrl: './detail-product.component.scss'

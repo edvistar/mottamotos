@@ -210,3 +210,55 @@ mat-card-actions {
 .boton{
   padding: 15px;
 }
+
+h1{
+  text-align: center;
+  color: rgb(5, 133, 244);
+}
+button{
+  margin: 1%;
+
+}
+
+mat-form-field{
+  align-items: center;
+  margin: 5px;
+
+ }
+ .container{
+  min-width: 300px;
+  max-width: 800px;
+  width: 100%;
+ }
+ .example-full-width {
+  width: 100%;
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap; /* Permite que pasen a otra línea si no caben */
+  gap: 10px;
+  justify-content: start; /* Alinea las imágenes desde la izquierda */
+  align-items: center; /* Centra los elementos verticalmente */
+}
+
+.image-wrapper {
+  display: flex;
+  flex-direction: column; /* Alinea la imagen y el checkbox en columna */
+  align-items: center; /* Centra dentro del div */
+}
+
+.preview-image {
+  width: 100px; /* Ajusta según necesidad */
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.options {
+  display: flex;
+  flex-direction:row; /* Coloca checkbox y radio uno encima del otro */
+  gap: 5px; /* Espacio entre checkbox y radio */
+}
+

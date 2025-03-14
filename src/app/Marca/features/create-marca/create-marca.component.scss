@@ -5,4 +5,16 @@
   border-radius: 8px; // Bordes redondeados opcionales
   margin: 5px; // Espaciado entre imágenes
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); // Sombra opcional para mejor apariencia
+  align-items: center;
+}
+h1{
+  text-align: center;
+  color: rgb(5, 133, 244);
+}
+button{
+  margin: 2px;
+
+}
+.file-container{
+  align-items: center;
 }
