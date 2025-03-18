@@ -3,7 +3,7 @@ import { NavbarComponent } from "../../shared/feactures/navbar/navbar.component"
 import { FooterComponent } from '../../shared/feactures/footer/footer.component';
 import {MatCardModule} from '@angular/material/card';
 import { NgFor } from '@angular/common';
-import { ProductService } from '../../Product/data-access/product.service';
+import { ProductService } from '../../Product/services/product.service';
 import { StorageService } from '../../shared/data-access/storage.service';
 import { Router } from '@angular/router';
 

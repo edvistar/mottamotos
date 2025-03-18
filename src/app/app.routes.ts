@@ -3,17 +3,17 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: 'product',
-    loadChildren: () => import('./Product/features/product.routes')
+    loadChildren: () => import('./Product/product.routes')
       .then(m => m.default) // Ensure 'ProductRoutes' is properly exported
   },
   {
     path: 'marca',
-    loadChildren: () => import('./Marca/features/marca.routes')
+    loadChildren: () => import('./Marca/marca.routes')
       .then(m => m.default) // Ensure 'ProductRoutes' is properly exported
   },
   {
     path: 'category',
-    loadChildren: () => import('./Category/features/category.routes')
+    loadChildren: () => import('./Category/category.routes')
       .then(m => m.default) // Ensure 'ProductRoutes' is properly exported
   },
 
