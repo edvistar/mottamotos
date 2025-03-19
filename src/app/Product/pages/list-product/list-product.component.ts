@@ -4,7 +4,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import { ProductService } from '../../services/product.service';
-import { StorageService } from '../../../shared/data-access/storage.service';
+import { StorageService } from '../../../shared/services/storage.service';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatTableModule} from '@angular/material/table';

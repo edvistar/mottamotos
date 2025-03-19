@@ -3,7 +3,7 @@ import { CategoryService } from '../../services/category.service';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 //import { Marca } from '../interfaces/marca';
-import { StorageService } from '../../../shared/data-access/storage.service';
+import { StorageService } from '../../../shared/services/storage.service';
 import { Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NavbarComponent } from "../../shared/feactures/navbar/navbar.component";
-import { FooterComponent } from '../../shared/feactures/footer/footer.component';
+import { NavbarComponent } from "../../shared/pages/navbar/navbar.component";
+import { FooterComponent } from '../../shared/pages/footer/footer.component';
 import {MatCardModule} from '@angular/material/card';
 import { NgFor } from '@angular/common';
 import { ProductService } from '../../Product/services/product.service';
-import { StorageService } from '../../shared/data-access/storage.service';
+import { StorageService } from '../../shared/services/storage.service';
 import { Router } from '@angular/router';
 
 @Component({

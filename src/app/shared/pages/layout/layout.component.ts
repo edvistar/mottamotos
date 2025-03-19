@@ -4,7 +4,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSidenav, MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import { Router } from '@angular/router';
-import { StorageService } from '../../data-access/storage.service';
+import { StorageService } from '../../services/storage.service';
 import { CookieService } from 'ngx-cookie-service';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';

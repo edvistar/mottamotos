@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 
 // Servicios
-import { StorageService } from '../../../shared/data-access/storage.service';
+import { StorageService } from '../../../shared/services/storage.service';
 import { ProductService } from '../../services/product.service';
 import { MarcaService } from '../../../Marca/services/marca.service';
 import { CategoryService } from '../../../Category/services/category.service';

@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from './services/login.service';
+import { LoginService } from '../../services/login.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Login } from '../../interfaces/login';
-import { StorageService } from '../../../shared/data-access/storage.service';
+import { StorageService } from '../../../shared/services/storage.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,9 +15,9 @@ import { MatButtonModule } from '@angular/material/button';
   standalone: true,
   imports: [
     MatFormFieldModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     MatInputModule,
-    MatButtonModule, 
+    MatButtonModule,
     MatIconModule
 
 

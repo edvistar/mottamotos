@@ -1,11 +1,12 @@
 import { Routes } from "@angular/router";
-import { LayoutComponent } from "./layout/layout.component";
+import { LayoutComponent } from "./pages/layout/layout.component";
+import { authGuard } from "../guards/auth.guard";
 
 
 export default [
     {
         path: '',
-        loadComponent: ()=> import('./layout/layout.component').then(m=>m.LayoutComponent)
+        loadComponent: ()=> import('./pages/layout/layout.component').then(m=>m.LayoutComponent)
     },
     {
         path: '',
@@ -14,26 +15,27 @@ export default [
 
           {
             path: 'product',
-            loadChildren: () => import('../../Product/product.routes')
+            loadChildren: () => import('../Product/product.routes')
             .then(m => m.default) // 👈 Carga las rutas del módulo de productos
           },
 
           {
             path: 'marca',
-              loadChildren: () => import('../../Marca/marca.routes')
+              loadChildren: () => import('../Marca/marca.routes')
               .then(m => m.default) // 👈 Carga las rutas del módulo de productos
           },
           {
             path: 'category',
-              loadChildren: () => import('../../Category/category.routes')
+              loadChildren: () => import('../Category/category.routes')
               .then(m => m.default) // 👈 Carga las rutas del módulo de productos
           },
-
-
-
-
+          {
+            path: 'user',
+            canActivate:[authGuard],
+              loadChildren: () => import('../User/user.routes')
+              .then(m => m.default) // 👈 Carga las rutas del módulo de productos
+          },
         ]
-
     }
 
 ] as Routes;

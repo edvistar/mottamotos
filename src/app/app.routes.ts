@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -19,11 +20,17 @@ export const routes: Routes = [
 
   {
     path: 'login',
-    loadComponent: () => import('./auth/feactures/login/login.component')
+    loadComponent: () => import('./auth/pages/login/login.component')
       .then(m => m.LoginComponent), // ✅ CORRECTO: loadComponent para standalone components
   },
+ {
+  path: 'user',
+  canActivate:[authGuard],
+  loadChildren: () => import('./User/user.routes')
+    .then(m => m.default), // ✅ CORRECTO: loadComponent para standalone components
+ },
   { path: 'layout',
-    loadChildren: ()=> import ('./shared/feactures/shared.routes').then(m=> m.default)
+    loadChildren: ()=> import ('./shared/shared.routes').then(m=> m.default)
   },
  {
   path: '',

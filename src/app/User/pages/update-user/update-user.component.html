@@ -1,1 +1,59 @@
-<p>update-user works!</p>
+<div class="container" >
+  <div fxLayout="row" fxLayoutGap="16px">
+  <!-- Formulario -->
+  <form [formGroup]="formUser" fxFlex="60%">
+    <mat-card class="form-card">
+      <mat-card-header>
+        <h1 class="text-center">
+          Crear Usuario
+        </h1>
+      </mat-card-header>
+
+      <mat-card-content  class="example-full-width">
+        <div fxLayout="row wrap" fxLayoutGap="16px">
+          <mat-form-field fxFlex="45%" appearance="fill">
+            <mat-label>Nombre de Usuario</mat-label>
+            <input matInput formControlName="userName" placeholder="Ingrese el Nombre de Usuario">
+          </mat-form-field>
+
+          <mat-form-field fxFlex="45%" appearance="fill">
+            <mat-label>Apellidos</mat-label>
+            <input matInput formControlName="apellidos" placeholder="Ingrese Apellidos">
+          </mat-form-field>
+
+          <mat-form-field fxFlex="45%" appearance="fill">
+            <mat-label>Nombres</mat-label>
+            <input matInput formControlName="nombres" placeholder="Ingrese Nombres">
+          </mat-form-field>
+          <mat-form-field fxFlex="45%" appearance="fill">
+            <mat-label>Documento</mat-label>
+            <input matInput formControlName="documento" placeholder="Ingrese Documento">
+          </mat-form-field>
+          
+          <mat-form-field fxFlex="45%" appearance="fill">
+            <mat-label>Dirección</mat-label>
+            <input matInput formControlName="address" placeholder="Ingrese Dirección">
+          </mat-form-field>
+          <mat-form-field fxFlex="45%" appearance="fill">
+            <mat-label>Telefóno</mat-label>
+            <input matInput formControlName="phoneNumber" placeholder="Ingrese Telefóno">
+          </mat-form-field>
+          <mat-form-field fxFlex="45%" appearance="fill">
+            <mat-label>Rol</mat-label>
+            <input matInput formControlName="rol" placeholder="Ingrese Rol">
+          </mat-form-field>
+        </div>
+
+        <div  class="col-12" >
+        <!-- <div class="button-container col-md-6">
+          <button mat-raised-button color="primary" (click)="UpdateUser()">Actualizar Usuario</button>
+        </div> -->
+      </div>
+      </mat-card-content>
+    </mat-card>
+  </form>
+  </div>
+</div>
+
+
+

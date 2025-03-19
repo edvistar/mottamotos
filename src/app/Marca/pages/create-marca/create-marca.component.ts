@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { StorageService } from '../../../shared/data-access/storage.service';
+import { StorageService } from '../../../shared/services/storage.service';
 import { MarcaService } from '../../services/marca.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Marca } from '../../interfaces/marca';

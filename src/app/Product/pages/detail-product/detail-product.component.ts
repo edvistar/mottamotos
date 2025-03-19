@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
-import { StorageService } from '../../../shared/data-access/storage.service';
+import { StorageService } from '../../../shared/services/storage.service';
 import {MatCardModule} from '@angular/material/card';
 import { NgIf, NgFor, NgClass } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { NavbarComponent } from '../../../shared/feactures/navbar/navbar.component';
-import { FooterComponent } from '../../../shared/feactures/footer/footer.component';
+import { NavbarComponent } from '../../../shared/pages/navbar/navbar.component';
+import { FooterComponent } from '../../../shared/pages/footer/footer.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 

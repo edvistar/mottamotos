@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../../../../environment/environment';
+import { environment } from '../../../../environment/environment';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { Login } from '../../../interfaces/login';
+import { Login } from '../interfaces/login';
 import { Observable } from 'rxjs';
-import { Sesion } from '../../../interfaces/sesion';
+import { Sesion } from '../interfaces/sesion';
 
 @Injectable({
   providedIn: 'root'
