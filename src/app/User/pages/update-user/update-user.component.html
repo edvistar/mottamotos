@@ -29,7 +29,7 @@
             <mat-label>Documento</mat-label>
             <input matInput formControlName="documento" placeholder="Ingrese Documento">
           </mat-form-field>
-          
+
           <mat-form-field fxFlex="45%" appearance="fill">
             <mat-label>Dirección</mat-label>
             <input matInput formControlName="address" placeholder="Ingrese Dirección">
@@ -38,16 +38,20 @@
             <mat-label>Telefóno</mat-label>
             <input matInput formControlName="phoneNumber" placeholder="Ingrese Telefóno">
           </mat-form-field>
-          <mat-form-field fxFlex="45%" appearance="fill">
+          <mat-form-field class="mat-30" appearance="fill">
             <mat-label>Rol</mat-label>
-            <input matInput formControlName="rol" placeholder="Ingrese Rol">
+            <mat-select formControlName="rol">
+              <mat-option *ngFor="let item of listaRoles" [value]="item.name">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
 
         <div  class="col-12" >
-        <!-- <div class="button-container col-md-6">
+        <div class="button-container col-md-6">
           <button mat-raised-button color="primary" (click)="UpdateUser()">Actualizar Usuario</button>
-        </div> -->
+        </div>
       </div>
       </mat-card-content>
     </mat-card>

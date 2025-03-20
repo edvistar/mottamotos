@@ -10,11 +10,13 @@ export default [
   },
   {
     path: 'create-user',
+    canActivate:[authGuard],
     loadComponent: () => import('./pages/create-user/create-user.component')
       .then(m => m.CreateUserComponent), // Ensure correct named export
   },
   {
     path: 'update-user/:id',
+    canActivate:[authGuard],
     loadComponent: () => import('./pages/update-user/update-user.component')
       .then(m => m.UpdateUserComponent), // Ensure correct named export
   }

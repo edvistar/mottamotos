@@ -20,6 +20,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UpdateUser } from '../../interfaces/update-user';
 import { ApiResponse } from '../../../interfaces/api-response';
 import { User } from '../../interfaces/user';
+import { Rol } from '../../interfaces/rol';
 
 @Component({
   selector: 'app-update-user',
@@ -42,7 +43,7 @@ import { User } from '../../interfaces/user';
 })
 export class UpdateUserComponent implements OnInit {
   user: User = {
-    id: 0, // Inicializar con 0 o null
+    id: '', // Inicializar con 0 o null
     userName: '',
     apellidos: '',
     nombres: '',
@@ -52,7 +53,7 @@ export class UpdateUserComponent implements OnInit {
     rol: ''
   };
   formUser: FormGroup;
-
+   listaRoles: Rol[] = [];
   constructor(
     private fb: FormBuilder,
     private _storageService: StorageService,
@@ -69,6 +70,13 @@ export class UpdateUserComponent implements OnInit {
       address: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       rol: ['', Validators.required]
+    });
+    this._userService.listadoRoles().subscribe({
+      next: (data) =>{
+        if(data.isExitoso) this.listaRoles = data.resultado;
+        console.log("roles",data.resultado);
+      },
+      error: (e) =>{}
     });
   }
 
@@ -93,14 +101,12 @@ export class UpdateUserComponent implements OnInit {
 
     this._userService.getUserById(user.id).subscribe({
       next: (response: ApiResponse) => {
-        console.log('Respuesta del backend ahora:', response); // Verifica la respuesta
         if (response.isExitoso) {
           // Extrae los datos del usuario desde response.resultado
           const usuario = response.resultado;
-          console.log('Usuario obtenido:', usuario);
-
           // Rellena el formulario excluyendo el campo 'id'
           this.formUser.patchValue({
+            id: usuario.id,
             userName: usuario.userName,
             apellidos: usuario.apellidos,
             nombres: usuario.nombres,
@@ -119,5 +125,28 @@ export class UpdateUserComponent implements OnInit {
         console.error('Error al obtener el usuario:', err);
       }
     });
+
   }
+  // Nueva función para actualizar el usuario
+  UpdateUser(): void {
+  if (this.formUser.invalid) {
+    console.error('El formulario no es válido.');
+    return;
+  }
+
+  const usuarioActualizado: User = this.formUser.value;
+
+  console.log('Enviando datos para actualizar usuario:', usuarioActualizado);
+
+  this._userService.editar(usuarioActualizado).subscribe({
+    next: () => {
+      this._storageService.mostrarAlerta('El Usuario se actualizó con éxito!', 'Completo');
+      this.router.navigate(['/layout/user/list-user']);
+    },
+    error: (e) => {
+      console.error('Error al actualizar usuario:', e);
+      this._storageService.mostrarAlerta('No se actualizó el Usuario', 'Error!');
+    }
+  });
+}
 }

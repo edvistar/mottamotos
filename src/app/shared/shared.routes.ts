@@ -1,6 +1,5 @@
 import { Routes } from "@angular/router";
 import { LayoutComponent } from "./pages/layout/layout.component";
-import { authGuard } from "../guards/auth.guard";
 
 
 export default [
@@ -31,7 +30,6 @@ export default [
           },
           {
             path: 'user',
-            canActivate:[authGuard],
               loadChildren: () => import('../User/user.routes')
               .then(m => m.default) // 👈 Carga las rutas del módulo de productos
           },

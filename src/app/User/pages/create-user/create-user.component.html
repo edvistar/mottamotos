@@ -45,9 +45,14 @@
             <mat-label>Password</mat-label>
             <input matInput formControlName="password" placeholder="Ingrese password">
           </mat-form-field>
-          <mat-form-field fxFlex="45%" appearance="fill">
+          <mat-form-field class="mat-30" appearance="fill">
             <mat-label>Rol</mat-label>
-            <input matInput formControlName="rol" placeholder="Ingrese Rol">
+            <mat-select formControlName="rol">
+              <mat-option *ngFor="let item of listaRoles" [value]="item.name">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+
           </mat-form-field>
         </div>
 

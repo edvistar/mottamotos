@@ -1,5 +1,5 @@
 export interface UpdateUser{
-  id: number,
+  id: string,
   userName: string,
   apellidos: string,
   nombres:string,

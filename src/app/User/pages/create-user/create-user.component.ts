@@ -16,6 +16,8 @@ import { StorageService } from '../../../shared/services/storage.service';
 import { UserService } from '../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Register } from '../../interfaces/register-user';
+import { ApiResponse } from '../../../interfaces/api-response';
+import { Rol } from '../../interfaces/rol';
 
 @Component({
   selector: 'app-create-user',
@@ -39,6 +41,7 @@ MatButtonModule],
 export class CreateUserComponent {
   userId: number | null = null;
   formUser: FormGroup;
+  listaRoles: Rol[] = [];
     constructor(
       private fb: FormBuilder,
       private _storageService: StorageService,
@@ -57,6 +60,14 @@ export class CreateUserComponent {
         rol: ['', Validators.required],
         password: [''] // Solo si es el formulario de registro
       });
+
+      this._userService.listadoRoles().subscribe({
+        next: (data) =>{
+          if(data.isExitoso) this.listaRoles = data.resultado;
+          console.log("roles",data.resultado);
+        },
+        error: (e) =>{}
+      });
     }
     CreateUser(){
       if(this.formUser.valid){
@@ -68,11 +79,13 @@ export class CreateUserComponent {
           address: this.formUser.value.address,
           phoneNumber: this.formUser.value.phoneNumber,
           email: this.formUser.value.email,
-          rol: this.formUser.value.rol,
+          rol: String(this.formUser.value.rol),
           password: this.formUser.value.password
         };
         this._userService.crear(user).subscribe({
           next: () => {
+
+          console.log("objetoUser",user);
             this._storageService.mostrarAlerta('El Usuario se Creo con éxito!', 'Completo');
             this.router.navigate(['/layout/user/list-user']);
           },
@@ -82,4 +95,5 @@ export class CreateUserComponent {
         });
       }
     }
+
 }

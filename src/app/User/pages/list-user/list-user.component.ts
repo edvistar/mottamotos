@@ -9,6 +9,7 @@ import { StorageService } from '../../../shared/services/storage.service';
 import { Router } from '@angular/router';
 import { User } from '../../interfaces/user';
 import Swal from 'sweetalert2';
+import { ApiResponse } from '../../../interfaces/api-response';
 
 @Component({
   selector: 'app-list-user',
