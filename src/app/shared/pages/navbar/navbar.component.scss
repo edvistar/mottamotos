@@ -2,3 +2,36 @@
 background: rgb(2,0,36);
 background: linear-gradient(90deg, rgba(2,0,36,1) 23%, rgba(2,0,36,1) 72%, rgba(171,0,15,1) 99%);
   }
+  .barNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+    .right-container {
+      display: flex;
+      align-items: center;
+      gap: 15px; // Espaciado entre elementos
+    }
+
+    .cart-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .cart-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: red;
+        color: white;
+        font-size: 12px;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }

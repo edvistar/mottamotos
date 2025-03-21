@@ -1,13 +1,25 @@
 <mat-toolbar class="fixed-top barNav" color="primary">
-  <!-- El título "Kairos" y el botón "Inicio" alineados a la izquierda -->
+  <!-- Contenedor izquierdo con logo y botón "Inicio" -->
   <div class="left-container">
     <img class="img-fluid rounded mb-4" loading="lazy" src="/logoNav.png" width="50%" height="50px" alt="logo del nav">
     <button mat-button routerLink="/">Inicio</button>
   </div>
 
-  <!-- El contenedor para los botones de Login y Registro alineados a la derecha -->
-  <div class="auth-buttons">
-    <button mat-button [routerLink]="'/login'">Login</button>
-    <button mat-button [routerLink]="'/usuarioRegistro'">Registro</button>
+  <!-- Contenedor derecho con botón de carrito y botones de Login/Registro -->
+  <div class="right-container">
+    <!-- Icono del carrito con contador -->
+    <div class="cart-container">
+      <button mat-icon-button routerLink="/cart">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+      <span *ngIf="cartItemCount > 0" class="cart-badge">{{ cartItemCount }}</span>
+    </div>
+
+    <!-- Botones de autenticación -->
+    <div class="auth-buttons">
+      <button mat-button routerLink="/login">Login</button>
+      <button mat-button routerLink="/usuarioRegistro">Registro</button>
+    </div>
   </div>
 </mat-toolbar>
+
