@@ -27,7 +27,7 @@ import { Rol } from '../../interfaces/rol';
     MatSelectModule,
     ReactiveFormsModule,
     NgFor,
-    NgIf,
+    
     FormsModule,
     MatInputModule,
     MatDialogModule,

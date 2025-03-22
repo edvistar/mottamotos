@@ -10,13 +10,17 @@ import { NgFor, NgIf } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { CategoryService } from '../../services/category.service';
 import { Category } from '../../interfaces/category';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-create-category',
   standalone: true,
   imports: [MatCardModule, MatFormFieldModule,
-    MatSelectModule, ReactiveFormsModule, NgFor, NgIf,
-    MatInputModule],
+    MatSelectModule, ReactiveFormsModule, 
+    MatInputModule,
+    MatButtonModule,
+MatInputModule,
+  ],
   templateUrl: './create-category.component.html',
   styleUrl: './create-category.component.scss'
 })

@@ -8,6 +8,11 @@ import { StorageService } from '../../services/storage.service';
 import { CookieService } from 'ngx-cookie-service';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-layout',
@@ -18,7 +23,17 @@ import { RouterModule } from '@angular/router';
     MatSidenavModule,
     MatListModule, 
     MatButtonModule,
-    RouterModule
+    RouterModule,
+    MatCardModule,
+    MatCardModule,
+MatIconModule,
+MatDividerModule,
+MatPaginatorModule,
+MatTableModule,
+MatInputModule,
+MatIconModule,
+MatListModule,
+RouterModule,
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'

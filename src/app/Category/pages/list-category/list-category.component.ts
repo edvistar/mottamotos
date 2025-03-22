@@ -10,13 +10,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import Swal from 'sweetalert2';
 import { Category } from '../../interfaces/category';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-list-category',
   standalone: true,
   imports: [MatCardModule, MatIconModule,
     MatDividerModule, MatPaginatorModule,
-    MatTableModule],
+    MatTableModule,
+    MatButtonModule,
+    MatInputModule,
+
+  ],
   templateUrl: './list-category.component.html',
   styleUrl: './list-category.component.scss'
 })
