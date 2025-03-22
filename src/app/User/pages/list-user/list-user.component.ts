@@ -9,7 +9,7 @@ import { StorageService } from '../../../shared/services/storage.service';
 import { Router } from '@angular/router';
 import { User } from '../../interfaces/user';
 import Swal from 'sweetalert2';
-import { ApiResponse } from '../../../interfaces/api-response';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-list-user',
@@ -20,6 +20,7 @@ import { ApiResponse } from '../../../interfaces/api-response';
     MatDividerModule,
     MatPaginatorModule,
     MatTableModule,
+    MatButtonModule
   ],
   templateUrl: './list-user.component.html',
   styleUrl: './list-user.component.scss',

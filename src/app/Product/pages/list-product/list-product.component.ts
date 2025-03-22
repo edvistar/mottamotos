@@ -24,8 +24,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatPaginatorModule,
     MatTableModule,
     RouterModule,
-    MatButtonModule,
-    MatIconModule
+    MatButtonModule
 
   ],
   templateUrl: './list-product.component.html',
