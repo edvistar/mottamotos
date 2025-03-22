@@ -15,9 +15,6 @@ body {
 
   background: rgb(3,114,247);
   background: linear-gradient(90deg, rgba(3,114,247,0.5494572829131652) 0%, rgba(162,183,255,0.4962359943977591) 1%);
-
-
-
   min-height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
   grid-template-rows: auto 1fr auto; /* Header, contenido principal y footer */
  }
@@ -26,7 +23,6 @@ mat-toolbar {
   display: flex;
   justify-content: space-between;  /* Esto asegura que los dos contenedores estén separados */
   align-items: center;             /* Centra los elementos verticalmente */
-
 }
 
 .left-container {
@@ -54,15 +50,6 @@ button{
   // color: #1445c2;
   padding: auto;
   margin: 2px;
-
-}
-
-h1{
-  text-align: center;
-  color: rgb(5, 133, 244);
-}
-button{
-  margin: 1%;
 
 }
 

@@ -6,12 +6,14 @@ import { NgFor } from '@angular/common';
 import { ProductService } from '../../Product/services/product.service';
 import { StorageService } from '../../shared/services/storage.service';
 import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-landing-page',
   standalone: true,
   imports: [NavbarComponent, FooterComponent,
-     MatCardModule, NgFor
+     MatCardModule, NgFor,
+     MatButtonModule,
     ],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.scss'

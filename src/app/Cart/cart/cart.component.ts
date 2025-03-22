@@ -10,6 +10,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, NgIf } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
+import { NavbarComponent } from '../../shared/pages/navbar/navbar.component';
+import { FooterComponent } from '../../shared/pages/footer/footer.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-cart',
@@ -17,7 +20,9 @@ import { MatDividerModule } from '@angular/material/divider';
   imports: [
     MatFormFieldModule, MatInputModule, MatIconModule, MatCardModule,
     ReactiveFormsModule, NgIf, MatTableModule, FormsModule, CommonModule,
-    MatDividerModule
+    MatDividerModule, NavbarComponent,
+    FooterComponent,MatButtonModule,
+    MatIconModule
   ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'

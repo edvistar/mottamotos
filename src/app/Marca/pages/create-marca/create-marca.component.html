@@ -44,13 +44,25 @@
         <div class="button-container">
           <button mat-raised-button color="primary" (click)="CrearModificarMarca()">{{ nombreBoton }}</button>
         </div>
+        <div *ngIf="formMarca.get('imageUrl')?.value">
+          <p>Imagen actual:</p>
+          <img [src]="formMarca.get('imageUrl')?.value" alt="Imagen 
+        actual" class="preview-image">
+        </div>
+
+
+
+
+
+
+
       </mat-card-content>
     </mat-card>
   </form>
 <!-- Mostrar imagen actual desde Reactive Forms -->
-<div *ngIf="formMarca.get('imageUrl')?.value">
-  <p>Imagen actual:</p>
-  <img [src]="formMarca.get('imageUrl')?.value" alt="Imagen actual" class="preview-image">
-</div>
+
+
+
+
 </div>
 

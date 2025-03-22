@@ -13,11 +13,10 @@
             <input matInput formControlName="name" placeholder="Ingrese el Nombre de la marca">
           </mat-form-field>
 
-        <mat-form-field fxFlex="100%" appearance="fill">
-          <mat-label>Descripción de la Categoria</mat-label>
-          <textarea matInput formControlName="description" placeholder="Ingrese la descripción"></textarea>
-        </mat-form-field>
-
+          <mat-form-field fxFlex="100%" appearance="fill">
+            <mat-label>Descripción de la Categoria</mat-label>
+            <textarea matInput formControlName="description" placeholder="Ingrese la descripción"></textarea>
+          </mat-form-field>
           <mat-form-field fxFlex="45%" appearance="fill">
             <mat-label>Estatus</mat-label>
             <mat-select formControlName="status">
@@ -26,8 +25,6 @@
             </mat-select>
           </mat-form-field>
         </div>
-
-
         <div class="button-container">
           <button mat-raised-button color="primary" (click)="CrearModificarCategoria()">{{ nombreBoton }}</button>
         </div>

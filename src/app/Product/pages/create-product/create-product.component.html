@@ -16,6 +16,12 @@
             <input matInput formControlName="name" placeholder="Ingrese el Nombre del producto">
           </mat-form-field>
 
+          <mat-form-field fxFlex="100%" appearance="fill">
+            <mat-label>Descripción del Producto</mat-label>
+            <textarea matInput formControlName="description" placeholder="Ingrese la 
+          descripción"></textarea>
+          </mat-form-field>
+
           <mat-form-field fxFlex="45%" appearance="fill">
             <mat-label>Serial del Producto</mat-label>
             <input matInput formControlName="serialNumber" placeholder="Ingrese el Número de serie">
@@ -62,11 +68,7 @@
                 {{ marca.name }}
               </mat-option>
             </mat-select>
-          </mat-form-field>
-          <mat-form-field fxFlex="100%" appearance="fill">
-            <mat-label>Descripción del Producto</mat-label>
-            <textarea matInput formControlName="description" placeholder="Ingrese la descripción"></textarea>
-          </mat-form-field>
+          </mat-form-field>  
         </div>
 
         <div  class="col-12" >
@@ -90,15 +92,20 @@
               <img [src]="img.imageUrl" alt="Imagen actual" class="preview-image">
               <div class="options">
                  <!-- Checkbox con el ID correcto -->
+                  <label for="checkbox ">
+                    Eliminar
+                  </label>
                  <input type="checkbox" (change)="actualizarListaEliminar($event, img.id)"    class="ckeckbox">
                   <!-- Radio button para seleccionar la imagen principal -->
+                  <label for="checkbox ">
+                    Img Principal
+                 </label>
                   <input type="radio"
                  name="imagenPrincipal"
                  [value]="img.id"
                  [checked]="img.id === formProduct.get('imagenPrincipalId')?.value"
                  (change)="seleccionarImagenPrincipal(img.id)">
               </div>
-
             </div>
           </div>
         </div>
@@ -112,22 +119,6 @@
         <input type="checkbox" (change)="actualizarListaEliminar(img)">
       </div>
     </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   </div>
 </div>
 

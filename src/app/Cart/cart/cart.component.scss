@@ -1,0 +1,35 @@
+.aling{
+    align-items: flex-end;
+}
+h1{
+    text-align: center;
+    color: rgb(5, 133, 244);
+}
+button{
+    margin: 1%;
+    align-items: center;
+
+
+}
+.tam{
+    width:1200px;
+}
+.cart-container{
+    padding: 5px;
+    height: 100vh;
+
+}
+.posis{
+   
+    background-color: transparent;
+    position: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+.cart-total{
+    text-align:end;
+}
+.cart-actions{
+    text-align: center;
+}

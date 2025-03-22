@@ -6,3 +6,31 @@ button{
     margin: 1%;
 
 }
+h1{
+    text-align: center;
+    color: rgb(5, 133, 244);
+  }
+  button{
+    margin: 1%;
+  
+  }
+  
+  mat-form-field{
+    align-items: center;
+    margin: 5px;
+  
+   }
+   .container{
+    width: 100%;
+   }
+   .example-full-width {
+    width: 100%;
+  }
+  
+  .image-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que pasen a otra línea si no caben */
+    gap: 10px;
+    justify-content: start; /* Alinea las imágenes desde la izquierda */
+    align-items: center; /* Centra los elementos verticalmente */
+  }
