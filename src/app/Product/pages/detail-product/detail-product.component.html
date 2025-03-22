@@ -37,8 +37,11 @@
             <button mat-raised-button  (click)="BackHome()">
               Seguir Comprando
             </button>
-            <button mat-raised-button >Comprar</button>
-            <button mat-raised-button color="accent">Agregar al carrito</button>
+            <!-- <button mat-raised-button >Comprar</button> -->
+            <button mat-raised-button color="accent" (click)="addToCart(product)">
+              Agregar al carrito
+            </button>
+
           </div>
         </div>
       </div>

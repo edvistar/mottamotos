@@ -30,6 +30,11 @@ export const routes: Routes = [
   { path: 'layout',
     loadChildren: ()=> import ('./shared/shared.routes').then(m=> m.default)
   },
+{
+  path: 'cart',
+  loadComponent: () => import('./Cart/cart/cart.component')
+  .then(m => m.CartComponent), // Asegúrate de exportar correctamente el componente
+},
  {
   path: '',
   loadComponent: () => import('./Landing/landing-page/landing-page.component')

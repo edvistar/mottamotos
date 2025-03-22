@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
+import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'app-list-marca',
   standalone: true,
@@ -25,6 +26,7 @@ import { RouterModule } from '@angular/router';
       MatIconModule,
       MatListModule,
       RouterModule,
+      MatButtonModule
 
     ],
   templateUrl: './list-marca.component.html',
