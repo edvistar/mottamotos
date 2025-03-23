@@ -9,17 +9,17 @@
         <mat-card-title>{{ product.name }}</mat-card-title>
         <mat-card-subtitle>{{ product.marca.name }}</mat-card-subtitle>
       </mat-card-header>
-      
-      
+
+
       <mat-card-content>
         <img class="image-container"
-mat-card-image [src]="getPrincipalImage(product.imagenes)" alt="{{ product.name }}">
+          mat-card-image [src]="getPrincipalImage(product.imagenes)" alt="{{ product.name }}">
         <p>
           {{ product.description || 'Sin descripción adicional disponible.' }}
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button 
+        <button mat-raised-button
         color="primary" (click)="ProductDetalle(product.id)">
           Detalle
         </button>

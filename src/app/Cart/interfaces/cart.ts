@@ -1,10 +1,11 @@
 export interface Cart {
   id: number;
-  product: {  // ✅ Asegúrate de que `product` tenga estas propiedades
+  product: {
     name: string;
     price: number;
-    imageUrl?: string;
+    imageUrl?: string;  // ✅ Se permite opcionalmente
   };
   quantity: number;
   total: number;
 }
+

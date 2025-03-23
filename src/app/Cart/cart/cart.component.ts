@@ -39,6 +39,13 @@ export class CartComponent implements OnInit {
       this.calculateTotal();
     });
   }
+  getPrincipalImage(imagenes?: { imageUrl: string; esPrincipal: boolean }[]): string {
+    if (!imagenes || imagenes.length === 0) {
+      return 'assets/no-image.png'; // Imagen por defecto
+    }
+    const principal = imagenes.find(img => img.esPrincipal);
+    return principal?.imageUrl || imagenes[0]?.imageUrl || 'assets/no-image.png';
+  }
 
   removeItem(itemId: number): void {
     this.cartService.removeItem(itemId);
@@ -69,10 +76,4 @@ export class CartComponent implements OnInit {
   BackHome(): void {
     this.router.navigate(['/']);
   }
-  loadCart(): void {
-    this.cartItems = this.cartService.getCart();
-    console.log('Carrito cargado:', this.cartItems); // 🔍 Verifica los datos en consola
-    this.calculateTotal();
-  }
-
 }

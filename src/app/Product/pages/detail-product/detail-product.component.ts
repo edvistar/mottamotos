@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CartService } from '../../../Cart/services/cart.service';
 import { Cart } from '../../../Cart/interfaces/cart';
+import { Product } from '../../interfaces/product';
 
 @Component({
   selector: 'app-detail-product',
@@ -30,13 +31,15 @@ export class DetailProductComponent {
   productId: number = 0;
   product: any;  // Aquí almacenarás los detalles del producto
   currentImage: any;
+  cart: Cart[] = [];
+
 
   constructor(
     private route: ActivatedRoute,  // Para obtener el ID desde la URL
     private _productService: ProductService,  // Servicio para obtener los detalles del producto
     private _storageService: StorageService,
     private cartService: CartService, // Inyectado el servicio del carrito
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -71,19 +74,31 @@ export class DetailProductComponent {
     this.router.navigate(['/']);
   }
 
-  addToCart(product: any) {
-    const cartItem: Cart = {
-      id: product.id,
-      product: {  // ✅ Debes incluir el objeto `product`
-        name: product.name,
-        price: product.price,
-        imageUrl: product.imageUrl || '/assets/default-image.jpg'
+  addToCart() {
+    if (!this.product) return;
+
+    const cartItem = {
+      id: this.product.id,
+      product: {
+        name: this.product.name,
+        price: this.product.price,
+        imageUrl: this.getPrincipalImage(this.product.imagenes) // ✅ Obtener imagen principal
       },
       quantity: 1,
-      total: product.price
+      total: this.product.price
     };
 
     this.cartService.addToCart(cartItem);
+    console.log("Producto agregado al carrito:", cartItem);
   }
+
+  getPrincipalImage(imagenes?: { imageUrl: string; esPrincipal: boolean }[]): string {
+    if (!imagenes || imagenes.length === 0) {
+      return 'assets/no-image.png'; // Imagen por defecto
+    }
+    const principal = imagenes.find(img => img.esPrincipal);
+    return principal?.imageUrl || imagenes[0]?.imageUrl || 'assets/no-image.png';
+  }
+
 
 }

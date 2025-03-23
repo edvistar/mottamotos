@@ -20,12 +20,12 @@ button{
 
 }
 .posis{
-   
+
     background-color: transparent;
     position: flex;
     align-items: center;
     flex-wrap: wrap;
-    
+
 }
 .cart-total{
     text-align:end;
@@ -35,4 +35,11 @@ button{
 }
 table {
     width: 100%;
+  }
+  .image-container {
+    max-width: 200px;  // Asegura que la imagen no sobrepase el ancho del contenedor
+    max-height: 200px;     // Mantiene la proporción de la imagen
+    object-fit: contain; // Asegura que la imagen se ajuste dentro del contenedor sin recortarse
+    display: block;
+    margin: 0 auto; // Centra la imagen si es necesario
   }
