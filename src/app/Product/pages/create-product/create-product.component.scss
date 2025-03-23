@@ -70,8 +70,9 @@ mat-form-field{
 }
 
 .preview-image {
-  width: 100px; /* Ajusta según necesidad */
-  height: 100px;
+  width:300px;
+  /* Ajusta según necesidad */
+  height:300px;
   object-fit: cover;
   border-radius: 8px;
   border: 1px solid #ddd;
@@ -79,7 +80,7 @@ mat-form-field{
 
 .options label {
   // display: flex;
-  flex-direction:column;
-  /* Coloca checkbox y radio uno encima del otro */
+  flex-direction:row;  /* Coloca checkbox y radio uno encima del otro */
   gap: 5px; /* Espacio entre checkbox y radio */
+  margin: 2px;
 }
