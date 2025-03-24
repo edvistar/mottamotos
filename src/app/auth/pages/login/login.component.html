@@ -1,4 +1,57 @@
-<section class="p-3 p-md-4 p-xl-5 cont">
+<section class="cont">
+  <div class="login-card bord">
+    <mat-card class="colorbar">
+      <div class="login-content">
+
+        <!-- Sección de Logo -->
+        <div class="login-logo">
+          <img class="logo" src="/logo.png" alt="Motta Motos">
+        </div>
+
+        <!-- Sección de Formulario -->
+        <div class="login-form">
+          <h2>Bienvenido</h2>
+          <mat-divider></mat-divider>
+          <p class="letter">Su moto en las manos de especialistas</p>
+
+          <form [formGroup]="formLogin" (ngSubmit)="iniciarSesion()">
+
+            <!-- Username -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Usuario</mat-label>
+              <input matInput formControlName="username" autocomplete="off">
+              <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+
+            <!-- Password -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Contraseña</mat-label>
+              <input [type]="ocultarPassword()? 'password' : 'text'" matInput formControlName="password" autocomplete="off">
+              <button mat-icon-button matSuffix (click)="clickEvent($event)" type="button">
+                <mat-icon>{{ ocultarPassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </button>
+            </mat-form-field>
+
+            <!-- Botones -->
+            <div class="login-buttons">
+              <button mat-raised-button color="primary" type="submit" [disabled]="formLogin.invalid" class="custom-text">
+                <mat-icon>account_circle</mat-icon> Iniciar Sesión
+              </button>
+              <button mat-stroked-button color="accent" (click)="BackHome()" class="custom-text">
+                <mat-icon>keyboard_backspace</mat-icon> Volver al Catálogo
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </mat-card>
+  </div>
+</section>
+
+
+<!-- <section class="p-3 p-md-4 p-xl-5 cont">
   <div class="container">
     <div class="card border-light-subtle shadow-sm bord">
       <div class="row g-0">
@@ -6,9 +59,9 @@
           <div class="d-flex align-item-center justify-content-center h-100">
             <div class="col-10 col-xl-8 py-5">
               <img class="img-fluid rounded mb-4 logo" loading="lazy" src="/logo.png"  alt="Motta Motos">
-             
-             
-             
+
+
+
             </div>
           </div>
         </div>
@@ -66,5 +119,5 @@
   </div>
 </section>
 
-<!-- <mat-progress-bar mode="indeterminate" *ngIf="mostrarLoading"></mat-progress-bar> -->
-
+<mat-progress-bar mode="indeterminate" *ngIf="mostrarLoading"></mat-progress-bar>
+ -->

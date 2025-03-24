@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CartService } from '../../../Cart/services/cart.service';
 import { Cart } from '../../../Cart/interfaces/cart';
 import { Product } from '../../interfaces/product';
+import {MatDividerModule} from '@angular/material/divider';
 
 @Component({
   selector: 'app-detail-product',
@@ -22,7 +23,7 @@ import { Product } from '../../interfaces/product';
     NavbarComponent,
     FooterComponent,
     MatButtonModule,
-    MatIconModule
+    MatIconModule, MatDividerModule
   ],
   templateUrl: './detail-product.component.html',
   styleUrls: ['./detail-product.component.scss'] // Corrección aquí

@@ -28,6 +28,14 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './cart.component.scss'
 })
 export class CartComponent implements OnInit {
+  displayedColumns: string [] = [
+    'image',
+    'name',
+    'price',
+    'quantity',
+    'total',
+    'acciones'
+  ];
   cartItems: Cart[] = [];
   totalAmount: number = 0;
 

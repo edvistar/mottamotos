@@ -1,280 +1,140 @@
-.container{
-max-width: 100%;
-max-height: 100%;
-
-}
-
-/* Estilo general para el contenedor */
-.product-detail-container {
-
-  align-items: center;
-  position: center;
-  align-items: center;
-  flex-wrap: wrap;
-  
-  height: 100vh;
-  // max-width: 1200px;
-  // margin: 1% auto;
-  // padding: 10px 10px;
-  // background-color:transparent;
-  // border-radius: 8px;
-  // box-shadow: 4px 4px rgba(0, 0, 0, 0.1);
-  // background-color: transparent;
-  // position: flex;
-  // align-items: center;
-  // flex-wrap: wrap;
-      
-  
-
-}
-
-/* Título del producto */
-.product-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #343131;
-  margin-bottom: 10px;
-}
-
-/* Subtítulo (marca y categoría) */
-.product-subtitle {
-  font-size: 1.2rem;
-  color: #777;
-  margin-bottom: 20px;
-}
-
-/* Contenedor de imagen y descripción */
-.product-image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 0px;
-  // border: #0056b3;
-}
-
-/* Imagen del producto */
-.product-image {
-  max-width: 300px;
-  max-height: 500px;
-  object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Contenedor de detalles adicionales */
-.product-details {
-  flex: 1;
-}
-
-/* Precio y descripción */
-.product-price {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #28a745;
-  margin-bottom: 10px;
-}
-
-.product-description {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 20px;
-}
-
-/* Contenedor de las imágenes adicionales */
-.product-images {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.product-image-thumbnail {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.product-image-thumbnail:hover {
-  transform: scale(1.05);
-}
-
-/* Botón para agregar al carrito o tomar acción */
-.product-actions {
-  color: white;
-  font-weight: bold;
-  padding: 10px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  border: none;
-  display: flex;
-  gap: 10px;
-}
-.product-actions button {
-  width: 100%; // Hace que los botones ocupen todo el ancho del contenedor
-  max-width: 300px; // Evita que sean demasiado grandes en pantallas grandes
-  height: 50px; // Aumenta la altura del botón
-  font-size: 1.2rem; // Aumenta el tamaño del texto
-  padding: 10px 20px; // Espaciado interno para evitar que el texto se pegue a los bordes
-  text-align: center; // Asegura que el texto esté centrado
-  border-radius: 8px; // Suaviza las esquinas del botón
-}
-
-.product-action-button:hover {
-  background-color: #0056b3;
-}
-
-.product-details-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 10px;
+.container {
+  background-color: rgb(233, 242, 242);
   width: 100%;
-}
-
-.thumbnail-column {
-  flex: 1;
-  max-width: 120px;
+  max-width: 900px; // Evita que se extienda demasiado en pantallas grandes
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: calc(100vh - 100px); // Ajusta restando el tamaño del navbar y el footer
 }
 
-.thumbnail-container {
+.detalle-card {
+  width: 95%; // Se adapta en móviles
+  max-width: 1200px; // Ajusta el ancho máximo en pantallas grandes
+  margin: auto; // Centra el card en la pantalla
+}
 
-  align-items: center;
+mat-card-header {
   display: flex;
-  flex-direction:row;
-  gap: 10px;
-
+  justify-content: center; // Centra horizontalmente el contenido
 }
-
-.thumbnail {
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  border-radius: 5px;
+.titulo {
+  text-align: center;
+  color: rgb(5, 133, 244);
+  font-size: 1.5rem;
 }
-
-.thumbnail:hover {
-  transform: scale(1.1);
-}
-
-.thumbnail.selected {
-  border: 2px solid #0056b3;
-}
-
-.thumbnail-image {
-  width:200px;
-  height: auto;
+.product-layout {
+  display: flex;
+  flex-wrap: wrap; // Permite que los elementos se acomoden en columnas si no hay espacio
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px; // Espaciado entre la imagen y el detalle
 }
 
 .main-image {
-  flex: 4;
-  max-width: 500px;
-    
-}
+  width: 100%;
+  max-width: 400px;  // Ajusta según el diseño
+  height: 300px;  // Mantiene una altura fija
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;  // Evita desbordamiento
+  border-radius: 8px;
 
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; // Ajusta la imagen sin recortarla
+  }
+}
 .product-image {
   width: 100%;
-  max-height: 500px;
-  object-fit: contain;
+  height: auto;
+  border-radius: 8px;
 }
 
 .product-info {
-  flex: 1;
+  flex: 2;
+  max-width: 55%; // Controla el ancho del detalle del producto
+}
+
+/* ✅ Diseño responsivo: Apila los elementos en pantallas pequeñas */
+@media (max-width: 768px) {
+  .product-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-image,
+  .product-info {
+    max-width: 100%;
+  }
+}
+.button-container {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 15px;
-}
+  gap: 0.5rem; // Espacio entre botones
+  justify-content: center;
 
-.product-info h2 {
-  margin: 0;
-  font-size: 1.8em;
-}
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
 
-.product-info h3 {
-  margin: 0;
-  font-size: 1.4em;
-  color: #0056b3;
+    button {
+      width: 100%; // Opcional, para que ocupen todo el ancho
+    }
+  }
 }
-
-.product-card {
-  width: 90%; // Más angosto
-  height: auto; // Más alto
-  max-width: 90vw; // Limita el ancho en pantallas pequeñas
-  max-height: 90vh; // Evita que sea demasiado alto en pantallas pequeñas
-  margin: auto; // Centrar el card
+.thumbnail-column {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-}
-
-
-.product-card-content {
-  margin-top: 10px;
-}
-
-mat-card-actions {
-  display: flex;
-  justify-content: space-between;
-}
-
-.boton{
-  padding: 15px;
-}
-
-h1{
-  text-align: center;
-  color: rgb(5, 133, 244);
-}
-button{
-  margin: 1%;
-
-}
-
-mat-form-field{
-  align-items: center;
-  margin: 5px;
-
- }
- .container{
   width: 100%;
-  height: 100%;
- }
- .example-full-width {
-  width: 100%;
+  max-width: 400px; // Ajusta según necesites
+  margin: auto;
+
+  h3 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .thumbnail-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .thumbnail {
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &.selected {
+      border: 2px solid #007bff;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+  }
 }
 
-.image-container {
-  display: flex;
-  flex-wrap: wrap; /* Permite que pasen a otra línea si no caben */
-  gap: 10px;
-  justify-content: start; /* Alinea las imágenes desde la izquierda */
-  align-items: center; /* Centra los elementos verticalmente */
+/* ✅ Diseño responsivo: Ajusta el tamaño en pantallas pequeñas */
+@media (max-width: 768px) {
+  .thumbnail-container {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  }
 }
 
-.image-wrapper {
-  display: flex;
-  flex-direction: column; /* Alinea la imagen y el checkbox en columna */
-  align-items: center; /* Centra dentro del div */
-}
-
-.preview-image {
-  width: 100px; /* Ajusta según necesidad */
-  height: 100px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-}
-
-.options {
-  display: flex;
-  flex-direction:row; /* Coloca checkbox y radio uno encima del otro */
-  gap: 5px; /* Espacio entre checkbox y radio */
-}
 

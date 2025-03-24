@@ -1,7 +1,7 @@
 <app-navbar/>
 
-<div class="container text-center  ">
-   <h1    class="text-center">Productos disponibles</h1>
+<div class="container text-center">
+   <h1 class="text-center">Catálogo de Productos</h1>
   <div class="product-container">
     <mat-card class="example-card" appearance="outlined" *ngFor="let product of products">
       <mat-card-header>
@@ -23,7 +23,6 @@
         color="primary" (click)="ProductDetalle(product.id)">
           Detalle
         </button>
-
       </mat-card-actions>
     </mat-card>
   </div>

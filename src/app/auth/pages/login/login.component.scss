@@ -1,41 +1,41 @@
-.full-width{
-  width:100%;
+.full-width {
+  width: 100%;
 }
- .colorbar{
 
-  display: grid;
+.colorbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-radius: 5%;
   padding: 20px;
-  
- }
- .letter{
-  color: #1445c2;
-  font-size: 1.575em;
-  text-align: center;
- }
-// 
- .bord{
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.bord {
   border-radius: 5%;
-  background-color: rgba(255, 255, 255, 0.2); /* Fondo blanco con 50% de transparencia */
-// 
- }
- h2{
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 100%;
+  max-width: 450px; // Ajuste máximo en pantallas grandes
+  padding: 20px;
+}
+
+h2 {
   display: flex;
   justify-content: center;
   align-items: center;
- }
-// 
-  .cont{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Ocupa toda la altura del viewport */
-    // 
-  }
+}
 
-.logo{
-  width:450px;
-  height:50%;
+.cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 10px; // Evita que se desborde
+}
+
+.logo {
+  max-width: 100%;
+  height: auto;
   border-radius: 5%;
   padding: 5px;
 }
@@ -44,17 +44,107 @@
   margin-left: 8px;
 }
 
-button{
-  padding: auto;
-  margin: 2px;
-  
+button {
+  margin: 5px 0;
+  width: 100%; // Para que no se desborden en móviles
 }
-mat-icon{
+
+mat-icon {
   color: rgb(37, 37, 156);
 }
-mat-label{
+
+mat-label {
   color: #1445c2;
 }
-.custom-text{
+
+.custom-text {
   color: #1445c2;
 }
+
+.login-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+  .bord {
+    max-width: 100%;  // Se adapta al ancho del dispositivo
+    padding: 15px;
+  }
+
+  .login-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  button {
+    width: 100%; // Ocupa todo el ancho en móviles
+  }
+}
+
+
+
+// .full-width{
+//   width:100%;
+// }
+//  .colorbar{
+
+//   display: grid;
+//   border-radius: 5%;
+//   padding: 20px;
+
+//  }
+//  .letter{
+//   color: #1445c2;
+//   font-size: 1.575em;
+//   text-align: center;
+//  }
+// //
+//  .bord{
+//   border-radius: 5%;
+//   background-color: rgba(255, 255, 255, 0.2); /* Fondo blanco con 50% de transparencia */
+// //
+//  }
+//  h2{
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//  }
+// //
+//   .cont{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     height: 100vh; /* Ocupa toda la altura del viewport */
+//     //
+//   }
+
+// .logo{
+//   width:450px;
+//   height:50%;
+//   border-radius: 5%;
+//   padding: 5px;
+// }
+
+// .container mat-form-field + mat-form-field {
+//   margin-left: 8px;
+// }
+
+// button{
+//   padding: auto;
+//   margin: 2px;
+
+// }
+// mat-icon{
+//   color: rgb(37, 37, 156);
+// }
+// mat-label{
+//   color: #1445c2;
+// }
+// .custom-text{
+//   color: #1445c2;
+// }

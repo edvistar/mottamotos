@@ -1,45 +1,87 @@
-.aling{
-    align-items: flex-end;
-}
-h1{
-    text-align: center;
-    color: rgb(5, 133, 244);
-}
-button{
-    margin: 1%;
-    align-items: center;
+// .aling{
+//     align-items: flex-end;
+// }
+// h1{
+//     text-align: center;
+//     color: rgb(5, 133, 244);
+// }
+// button{
+//     margin: 1%;
+//     align-items: center;
 
 
-}
-.tam{
-    width:1200px;
-}
-.cart-container{
-    padding: 5px;
-    height: 100vh;
+// }
+// .tam{
+//     width:1200px;
+// }
+// .cart-container{
+//     padding: 5px;
+//     height: 100vh;
 
-}
-.posis{
+// }
+// .posis{
 
-    background-color: transparent;
-    position: flex;
-    align-items: center;
-    flex-wrap: wrap;
+//     background-color: transparent;
+//     position: flex;
+//     flex-wrap: wrap;
 
+// }
+// .cart-total{
+//     text-align:end;
+// }
+// .cart-actions{
+//     text-align: center;
+// }
+// table {
+//     width: 100%;
+//   }
+// .container {
+//   width: 100%;
+//   max-width: 1200px; // Evita que se extienda demasiado en pantallas grandes
+//   margin: auto;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   padding: 1.5rem 1rem; // Igual arriba y abajo
+// }
+.container{
+  padding: 0.5rem; /* Relleno inferior */
 }
-.cart-total{
-    text-align:end;
+mat-card-header {
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
-.cart-actions{
-    text-align: center;
+
+.image-container {
+  max-width: 200px;  // Asegura que la imagen no sobrepase el ancho del contenedor
+  max-height: 200px;     // Mantiene la proporción de la imagen
+  object-fit: contain; // Asegura que la imagen se ajuste dentro del contenedor sin recortarse
+  display: block;
+  margin: 0 auto; // Centra la imagen si es necesario
 }
-table {
-    width: 100%;
-  }
-  .image-container {
-    max-width: 200px;  // Asegura que la imagen no sobrepase el ancho del contenedor
-    max-height: 200px;     // Mantiene la proporción de la imagen
-    object-fit: contain; // Asegura que la imagen se ajuste dentro del contenedor sin recortarse
-    display: block;
-    margin: 0 auto; // Centra la imagen si es necesario
-  }
+.align-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra todo el contenido */
+}
+.cart-total {
+  display: flex;
+  justify-content: flex-end; /* Alinea el contenido del div a la derecha */
+  margin-top: 10px; /* Opcional: agrega separación superior */
+}
+.button-container {
+  display: flex;
+  justify-content: center; /* Centra los botones horizontalmente */
+  gap: 10px; /* Espacio entre los botones */
+  padding-bottom: 2rem; /* Relleno inferior */
+  margin-bottom: 3rem; /* Añade más espacio debajo */
+}
+
+.carrito-card {
+  width: 100%; // Se adapta en móviles
+  max-width: 1200px; // Ajusta el ancho máximo en pantallas grandes
+  margin: auto; // Centra el card en la pantalla
+}
+
+
