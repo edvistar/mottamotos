@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
@@ -11,6 +11,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -21,14 +24,15 @@ import {MatDividerModule} from '@angular/material/divider';
     MatInputModule,
     MatButtonModule,
     MatIconModule, MatCardModule,
-    MatDividerModule
+    MatDividerModule, MatProgressBarModule,
+    NgIf, MatProgressSpinnerModule
 
 
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   ocultarPassword=signal(true);
   mostrarLoading: boolean = false;
@@ -81,5 +85,17 @@ export class LoginComponent {
   clickEvent(event: MouseEvent) {
     this.ocultarPassword.set(!this.ocultarPassword());
     event.stopPropagation();
+    this.iniciarCarga();
+  }
+  ngOnInit() {
+    this.formLogin.reset(); // Limpia los campos al cargar la vista de login
+  }
+
+
+  iniciarCarga() {
+    this.mostrarLoading = true;
+    setTimeout(() => {
+      this.mostrarLoading = false; // Simula que la carga termina
+    }, 3000);
   }
 }

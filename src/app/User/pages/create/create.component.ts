@@ -27,7 +27,7 @@ import { Rol } from '../../interfaces/rol';
     MatSelectModule,
     ReactiveFormsModule,
     NgFor,
-    
+
     FormsModule,
     MatInputModule,
     MatDialogModule,
@@ -35,10 +35,10 @@ import { Rol } from '../../interfaces/rol';
 MatIconModule,
 MatListModule,
 MatButtonModule],
-  templateUrl: './create-user.component.html',
-  styleUrl: './create-user.component.scss'
+  templateUrl: './create.component.html',
+  styleUrl: './create.component.scss'
 })
-export class CreateUserComponent {
+export class CreateComponent {
   userId: number | null = null;
   formUser: FormGroup;
   listaRoles: Rol[] = [];

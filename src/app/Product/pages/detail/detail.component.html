@@ -33,20 +33,22 @@
       </div>
 
       <mat-divider></mat-divider>
+  
+    </mat-card-content>
 
       <!-- Galería de miniaturas -->
       <div class="thumbnail-column">
         <h3 class="col">Galería</h3>
-        <div class="thumbnail-container">
+        <div class="thumbnail-container" [ngClass]="{'single-image': product.imagenes.length === 1}">
           <div *ngFor="let imagen of product.imagenes"
                (click)="changeImage(imagen)"
-               [ngClass]="{'selected': currentImage?.id === imagen.id}"
+               [ngClass]="{'selected': currentImage?.id === imagen.id, 'single': product.imagenes.length === 1}"
                class="thumbnail">
-            <img [src]="imagen.imageUrl" [alt]="product.name" class="thumbnail-image" />
+            <img mat-card-image [src]="imagen.imageUrl" [alt]="product.name" class="thumbnail-image" />
           </div>
         </div>
       </div>
-    </mat-card-content>
+
   </mat-card>
   <div *ngIf="!product" class="loading-container">
     <mat-spinner></mat-spinner>

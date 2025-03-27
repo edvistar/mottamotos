@@ -22,10 +22,10 @@ import {MatButtonModule} from '@angular/material/button';
     MatTableModule,
     MatButtonModule
   ],
-  templateUrl: './list-user.component.html',
-  styleUrl: './list-user.component.scss',
+  templateUrl: './list.component.html',
+  styleUrl: './list.component.scss',
 })
-export class ListUserComponent {
+export class ListComponent {
   displayedColumns: string[] = [
     'userName',
     'apellidos',
@@ -51,7 +51,7 @@ export class ListUserComponent {
     this.getUser();
   }
   newUser() {
-    this.router.navigate(['/layout/user/create-user']);
+    this.router.navigate(['/layout/user/create']);
   }
   getUser() {
     this._userService.lista().subscribe({
@@ -76,7 +76,7 @@ export class ListUserComponent {
     console.log('User ID:', userId);
 
     this.router
-      .navigate(['/layout/user/update-user', userId])
+      .navigate(['/layout/user/update', userId])
       .then((success) => {
         if (success) {
           console.log('Navegación exitosa a la edición del usuario.');

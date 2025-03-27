@@ -38,10 +38,10 @@ import { Rol } from '../../interfaces/rol';
     MatListModule,
     MatButtonModule,
   ],
-  templateUrl: './update-user.component.html',
-  styleUrl: './update-user.component.scss',
+  templateUrl: './update.component.html',
+  styleUrl: './update.component.scss',
 })
-export class UpdateUserComponent implements OnInit {
+export class UpdateComponent implements OnInit {
   user: User = {
     id: '', // Inicializar con 0 o null
     userName: '',

@@ -27,10 +27,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule
 
   ],
-  templateUrl: './list-product.component.html',
-  styleUrl: './list-product.component.scss'
+  templateUrl: './list.component.html',
+  styleUrl: './list.component.scss'
 })
-export class ListProductComponent implements OnInit {
+export class ListComponent implements OnInit {
   displayedColumns: string [] = [
     'name',
     'serialNumber',
@@ -53,7 +53,7 @@ export class ListProductComponent implements OnInit {
 
   }
   nuevoProducto(){
-    this.router.navigate(['/layout/product/create-product']);
+    this.router.navigate(['/layout/product/create']);
   }
 
   obtenerProductos(){
@@ -79,7 +79,7 @@ export class ListProductComponent implements OnInit {
     const productId = producto.id;
     console.log("Producto ID:", productId);
 
-    this.router.navigate(['/layout/product/create-product', productId]).then(success => {
+    this.router.navigate(['/layout/product/create', productId]).then(success => {
       if (success) {
         console.log("Navegación exitosa a la edición del producto.");
       } else {

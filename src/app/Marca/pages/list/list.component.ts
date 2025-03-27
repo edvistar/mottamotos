@@ -29,10 +29,10 @@ import {MatButtonModule} from '@angular/material/button';
       MatButtonModule
 
     ],
-  templateUrl: './list-marca.component.html',
-  styleUrl: './list-marca.component.scss'
+  templateUrl: './list.component.html',
+  styleUrl: './list.component.scss'
 })
-export class ListMarcaComponent {
+export class ListComponent {
    displayedColumns: string [] = [
       'name',
       'description',
@@ -53,7 +53,7 @@ export class ListMarcaComponent {
       this.obtenerMarcas();
     }
     nuevoMarca(){
-      this.router.navigate(['/layout/marca/create-marca']);
+      this.router.navigate(['/layout/marca/create']);
     }
 
     obtenerMarcas(){
@@ -78,7 +78,7 @@ export class ListMarcaComponent {
     const marcaId = marca.id;
     console.log("Marca ID:", marcaId);
 
-    this.router.navigate(['/layout/marca/create-marca', marcaId]).then(success => {
+    this.router.navigate(['/layout/marca/create', marcaId]).then(success => {
       if (success) {
         console.log("Navegación exitosa a la edición de la marca.");
       } else {

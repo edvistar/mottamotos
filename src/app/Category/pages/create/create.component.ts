@@ -16,15 +16,15 @@ import { MatButtonModule } from '@angular/material/button';
   selector: 'app-create-category',
   standalone: true,
   imports: [MatCardModule, MatFormFieldModule,
-    MatSelectModule, ReactiveFormsModule, 
+    MatSelectModule, ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
 MatInputModule,
   ],
-  templateUrl: './create-category.component.html',
-  styleUrl: './create-category.component.scss'
+  templateUrl: './create.component.html',
+  styleUrl: './create.component.scss'
 })
-export class CreateCategoryComponent {
+export class CreateComponent {
    categoryId:number | null = null;
     selectedFiles: File[] = []; // Array para almacenar los archivos seleccionados
     images: string[] = []; // Lista de rutas de imágenes seleccionadas para previsualización
@@ -64,7 +64,7 @@ export class CreateCategoryComponent {
                 this._categotyService.editar(formData).subscribe({
                   next: () => {
                     this._storageService.mostrarAlerta('Categoria actualizada con éxito!', 'Completo');
-                    this.router.navigate(['/layout/category/list-category']);
+                    this.router.navigate(['/layout/category/list']);
                   },
                   error: (e) => {
                     console.error("Error al actualizar:", e);
@@ -76,7 +76,7 @@ export class CreateCategoryComponent {
                 this._categotyService.crear(formData).subscribe({
                   next: () => {
                     this._storageService.mostrarAlerta('Categoria creada con éxito!', 'Completo');
-                    this.router.navigate(['/layout/category/list-category']);
+                    this.router.navigate(['/layout/category/list']);
                   },
                   error: (e) => {
                     console.error("Error al crear:", e);

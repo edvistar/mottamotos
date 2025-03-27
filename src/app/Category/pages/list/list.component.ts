@@ -23,10 +23,10 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
 
   ],
-  templateUrl: './list-category.component.html',
-  styleUrl: './list-category.component.scss'
+  templateUrl: './list.component.html',
+  styleUrl: './list.component.scss'
 })
-export class ListCategoryComponent {
+export class ListComponent {
   displayedColumns: string [] = [
     'name',
     'description',
@@ -46,7 +46,7 @@ export class ListCategoryComponent {
         this.obtenerCategorias();
       }
       nuevoCategory(){
-        this.router.navigate(['/layout/category/create-category']);
+        this.router.navigate(['/layout/category/create']);
       }
       obtenerCategorias(){
         this._categoryService.lista().subscribe({
@@ -70,7 +70,7 @@ export class ListCategoryComponent {
           const categoryId = category.id;
           console.log("Category ID:", categoryId);
 
-          this.router.navigate(['/layout/category/create-category', categoryId]).then(success => {
+          this.router.navigate(['/layout/category/create', categoryId]).then(success => {
             if (success) {
               console.log("Navegación exitosa a la edición de la categoria.");
             } else {

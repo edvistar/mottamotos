@@ -45,10 +45,10 @@ MatIconModule,
 MatListModule,
 MatButtonModule,
   ],
-  templateUrl: './create-product.component.html',
-  styleUrl: './create-product.component.scss'
+  templateUrl: './create.component.html',
+  styleUrl: './create.component.scss'
 })
-export class CreateProductComponent {
+export class CreateComponent {
   marcas: Marca[] = [];
   category: Category[] = [];
   productId: number | null = null;

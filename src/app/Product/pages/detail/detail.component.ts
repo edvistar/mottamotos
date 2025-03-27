@@ -25,10 +25,10 @@ import {MatDividerModule} from '@angular/material/divider';
     MatButtonModule,
     MatIconModule, MatDividerModule
   ],
-  templateUrl: './detail-product.component.html',
-  styleUrls: ['./detail-product.component.scss'] // Corrección aquí
+  templateUrl: './detail.component.html',
+  styleUrls: ['./detail.component.scss'] // Corrección aquí
 })
-export class DetailProductComponent {
+export class DetailComponent {
   productId: number = 0;
   product: any;  // Aquí almacenarás los detalles del producto
   currentImage: any;

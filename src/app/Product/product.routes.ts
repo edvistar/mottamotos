@@ -1,24 +1,33 @@
 import { Routes } from '@angular/router';
+import { authGuard } from '../guards/auth.guard';
 
 export default [
   {
-    path: 'list-product',
-    loadComponent: () => import('./pages/list-product/list-product.component')
-      .then(m => m.ListProductComponent), // Ensure correct named export
+    path: 'list',
+    loadComponent: () => import('./pages/list/list.component')
+      .then(m => m.ListComponent), // Ensure correct named export
+      canActivate: [authGuard]
   },
   {
-    path: 'create-product',
-    loadComponent: () => import('./pages/create-product/create-product.component')
-      .then(m => m.CreateProductComponent), // Ensure correct named export
+    path: 'create',
+    loadComponent: () => import('./pages/create/create.component')
+      .then(m => m.CreateComponent), // Ensure correct named export
+      canActivate: [authGuard]
   },
   {
-    path: 'create-product/:id',
-    loadComponent: () => import('./pages/create-product/create-product.component')
-      .then(m => m.CreateProductComponent), // Ensure correct named export
+    path: 'create/:id',
+    loadComponent: () => import('./pages/create/create.component')
+      .then(m => m.CreateComponent), // Ensure correct named export
+      canActivate: [authGuard]
   },
   {
     path: 'detail/:id',
-    loadComponent: () => import('./pages/detail-product/detail-product.component')
-      .then(m => m.DetailProductComponent), // Ensure correct named export
-  }
+    loadComponent: () => import('./pages/detail/detail.component')
+      .then(m => m.DetailComponent), // Ensure correct named export
+  },
+  {
+    path: '',
+    redirectTo: '/landing', // 🔹 Redirige a la landing si acceden a /products directamente
+    pathMatch: 'full'
+  },
 ] as Routes;

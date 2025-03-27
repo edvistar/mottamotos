@@ -28,10 +28,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
 
   ],
-  templateUrl: './create-marca.component.html',
-  styleUrl: './create-marca.component.scss'
+  templateUrl: './create.component.html',
+  styleUrl: './create.component.scss'
 })
-export class CreateMarcaComponent {
+export class CreateComponent {
   marcaId:number | null = null;
   selectedFiles: File[] = []; // Array para almacenar los archivos seleccionados
   images: string[] = []; // Lista de rutas de imágenes seleccionadas para previsualización
@@ -102,7 +102,7 @@ export class CreateMarcaComponent {
           this._marcaService.editar(formData).subscribe({
             next: () => {
               this._storageService.mostrarAlerta('Marca actualizada con éxito!', 'Completo');
-              this.router.navigate(['/layout/marca/list-marca']);
+              this.router.navigate(['/layout/marca/list']);
             },
             error: (e) => {
               console.error("Error al actualizar:", e);
@@ -114,7 +114,7 @@ export class CreateMarcaComponent {
           this._marcaService.crear(formData).subscribe({
             next: () => {
               this._storageService.mostrarAlerta('Marca creada con éxito!', 'Completo');
-              this.router.navigate(['/layout/marca/list-marca']);
+              this.router.navigate(['/layout/marca/list']);
             },
             error: (e) => {
               console.error("Error al crear:", e);

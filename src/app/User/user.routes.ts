@@ -3,21 +3,21 @@ import { authGuard } from '../guards/auth.guard';
 
 export default [
   {
-    path: 'list-user',
+    path: 'list',
     canActivate:[authGuard],
-    loadComponent: () => import('./pages/list-user/list-user.component')
-      .then(m => m.ListUserComponent), // Ensure correct named export
+    loadComponent: () => import('./pages/list/list.component')
+      .then(m => m.ListComponent), // Ensure correct named export
   },
   {
-    path: 'create-user',
+    path: 'create',
     canActivate:[authGuard],
-    loadComponent: () => import('./pages/create-user/create-user.component')
-      .then(m => m.CreateUserComponent), // Ensure correct named export
+    loadComponent: () => import('./pages/create/create.component')
+      .then(m => m.CreateComponent), // Ensure correct named export
   },
   {
-    path: 'update-user/:id',
+    path: 'update/:id',
     canActivate:[authGuard],
-    loadComponent: () => import('./pages/update-user/update-user.component')
-      .then(m => m.UpdateUserComponent), // Ensure correct named export
+    loadComponent: () => import('./pages/update/update.component')
+      .then(m => m.UpdateComponent), // Ensure correct named export
   }
 ] as Routes;
