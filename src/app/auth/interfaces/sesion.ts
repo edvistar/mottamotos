@@ -1,4 +1,5 @@
 export interface Sesion{
   userName:string,
-  token: string
+  token: string,
+  rol: string
 }

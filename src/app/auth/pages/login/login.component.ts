@@ -48,15 +48,23 @@ export class LoginComponent implements OnInit {
 
     });
   }
-  iniciarSesion(){
+  iniciarSesion() {
     this.mostrarLoading = true;
     const request: Login = {
       userName: this.formLogin.value.username,
       password: this.formLogin.value.password
     };
+
     this.loginService.iniciarSesion(request).subscribe({
       next: (response) => {
-        this._storageService.guardarSesion(response);
+        // Guardar solo userName y rol en localStorage
+        const usuarioSesion = {
+          userName: response.userName,
+          rol: response.rol, // 📌 Solo guardamos estos dos valores
+        };
+        this._storageService.guardarSesion(usuarioSesion);
+
+        // Guardar el token en la cookie
         this.cookieService.set(
           'Authorization',
           `Bearer ${response.token}`,
@@ -66,18 +74,19 @@ export class LoginComponent implements OnInit {
           true,
           'Strict'
         );
+
         this.router.navigateByUrl('layout');
       },
-      complete: ()=>{
+      complete: () => {
         this.mostrarLoading = false;
       },
-      error:(error) =>{
+      error: (error) => {
         this._storageService.mostrarAlerta(error.error, 'Error!');
         this.mostrarLoading = false;
-
       }
     });
   }
+
   BackHome(): void {
     this.router.navigate(['/']);
   }

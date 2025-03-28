@@ -1,23 +1,24 @@
 import { Routes } from '@angular/router';
-import { authGuard } from '../guards/auth.guard';
+import { authGuard } from '../core/_guards/auth.guard';
+import { roleGuard } from '../core/_guards/role.guard';
 
 export default [
   {
     path: 'list',
-    canActivate:[authGuard],
     loadComponent: () => import('./pages/list/list.component')
       .then(m => m.ListComponent), // Ensure correct named export
+      canActivate: [authGuard, roleGuard]
   },
   {
     path: 'create',
-    canActivate:[authGuard],
     loadComponent: () => import('./pages/create/create.component')
       .then(m => m.CreateComponent), // Ensure correct named export
+      canActivate: [authGuard, roleGuard]
   },
   {
     path: 'update/:id',
-    canActivate:[authGuard],
     loadComponent: () => import('./pages/update/update.component')
       .then(m => m.UpdateComponent), // Ensure correct named export
+      canActivate: [authGuard, roleGuard]
   }
 ] as Routes;

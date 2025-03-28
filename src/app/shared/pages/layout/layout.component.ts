@@ -19,9 +19,9 @@ import { MatInputModule } from '@angular/material/input';
   standalone: true,
   imports: [
     MatToolbarModule,
-    MatIconModule, 
+    MatIconModule,
     MatSidenavModule,
-    MatListModule, 
+    MatListModule,
     MatButtonModule,
     RouterModule,
     MatCardModule,
@@ -55,10 +55,10 @@ export class LayoutComponent implements OnInit {
   }
   ngOnInit(): void {
     const usuarioSesion = this._storageService.obtenerSesion();
-    if(usuarioSesion!=null)
-    {
-      this.username = usuarioSesion;//este es el userName como viene del backend
+    if (usuarioSesion && usuarioSesion.userName) {
+      this.username = usuarioSesion.userName; // ✅ Ahora asigna solo el nombre de usuario
     }
+
   }
   cerrarSesion(){
       this._storageService.eliminarSesion();

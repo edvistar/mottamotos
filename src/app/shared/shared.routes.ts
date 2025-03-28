@@ -21,7 +21,7 @@ export default [
           {
             path: 'marca',
               loadChildren: () => import('../Marca/marca.routes')
-              .then(m => m.default) // 👈 Carga las rutas del módulo de productos
+              .then(m => m.default), // 👈 Carga las rutas del módulo de productos
           },
           {
             path: 'category',

@@ -19,15 +19,24 @@ export class StorageService {
     })
   }
 
-  guardarSesion(sesion: Sesion){
-    localStorage.setItem("usuarioSesion", JSON.stringify (sesion.userName));
+  guardarSesion(sesion: { userName: string; rol: string }){
+    localStorage.setItem("usuarioSesion", JSON.stringify (sesion));
   }
 
-  obtenerSesion(){
+  obtenerSesion() {
     const sesionString = localStorage.getItem("usuarioSesion");
-    const usuarioSesion = JSON.parse(sesionString!);
-    return usuarioSesion;
+    if (!sesionString) return null; // Evita errores si no hay datos
+
+    try {
+      const usuarioSesion = JSON.parse(sesionString);
+      console.log("🟢 Sesión obtenida desde localStorage:", usuarioSesion);
+      return usuarioSesion;
+    } catch (error) {
+      console.error("⚠️ Error al parsear la sesión:", error);
+      return null;
+    }
   }
+
 
   eliminarSesion(){
     localStorage.removeItem("usuarioSesion");

@@ -141,7 +141,7 @@ export class UpdateComponent implements OnInit {
   this._userService.editar(usuarioActualizado).subscribe({
     next: () => {
       this._storageService.mostrarAlerta('El Usuario se actualizó con éxito!', 'Completo');
-      this.router.navigate(['/layout/user/list-user']);
+      this.router.navigate(['/layout/user/list']);
     },
     error: (e) => {
       console.error('Error al actualizar usuario:', e);
