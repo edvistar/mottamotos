@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // Angular Material
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,30 +18,24 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Register } from '../../interfaces/register-user';
 import { ApiResponse } from '../../../interfaces/api-response';
 import { Rol } from '../../interfaces/rol';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-create-user',
   standalone: true,
-  imports: [MatCardModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    NgFor,
-
-    FormsModule,
-    MatInputModule,
-    MatDialogModule,
-    MatInputModule,
-MatIconModule,
-MatListModule,
-MatButtonModule],
+  imports: [MatCardModule, MatFormFieldModule, MatSelectModule,
+    ReactiveFormsModule, NgFor,FormsModule,
+    MatInputModule,MatDialogModule, MatInputModule,
+MatIconModule,MatListModule, MatButtonModule, CommonModule],
   templateUrl: './create.component.html',
   styleUrl: './create.component.scss'
 })
-export class CreateComponent {
+export class CreateComponent implements OnInit{
   userId: number | null = null;
   formUser: FormGroup;
   listaRoles: Rol[] = [];
+  username: string = '';
+  rolUsuario: string = '';
     constructor(
       private fb: FormBuilder,
       private _storageService: StorageService,
@@ -64,7 +58,6 @@ export class CreateComponent {
       this._userService.listadoRoles().subscribe({
         next: (data) =>{
           if(data.isExitoso) this.listaRoles = data.resultado;
-          console.log("roles",data.resultado);
         },
         error: (e) =>{}
       });
@@ -95,5 +88,12 @@ export class CreateComponent {
         });
       }
     }
+    ngOnInit(): void {
+      const usuarioSesion = this._storageService.obtenerSesion();
+      if (usuarioSesion && usuarioSesion.userName) {
+        this.username = usuarioSesion.userName; // ✅ Ahora asigna solo el nombre de usuario
+         this.rolUsuario = usuarioSesion.rol?.toLowerCase() || ''; 
+      }
 
+    }
 }

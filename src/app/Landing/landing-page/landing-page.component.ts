@@ -32,7 +32,6 @@ export class LandingPageComponent implements OnInit{
       next: (data) => {
         if (data.isExitoso) {
           this.products = data.resultado;
-          console.log(data.resultado);
         } else
           this._storageService.mostrarAlerta(
             'No se  encontraron datos',
@@ -51,7 +50,6 @@ export class LandingPageComponent implements OnInit{
   }
 
   ProductDetalle(productId: number){
-    console.log('ID del producto seleccionado:', productId);
     this.router.navigate([`product/detail/${productId}`]);
 
   }

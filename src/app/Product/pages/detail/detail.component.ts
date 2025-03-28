@@ -53,7 +53,6 @@ export class DetailComponent {
     this._productService.getProductById(this.productId).subscribe({
       next: (data) => {
         if (data.isExitoso) {
-          console.log("Producto obtenido por Id", data.resultado);
           this.product = data.resultado;
           // Establecer la imagen principal como la que tiene la propiedad EsPrincipal = true
           this.currentImage = this.product.imagenes.find((img: any) => img.esPrincipal) || this.product.imagenes[0];

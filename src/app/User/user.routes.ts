@@ -13,7 +13,6 @@ export default [
     path: 'create',
     loadComponent: () => import('./pages/create/create.component')
       .then(m => m.CreateComponent), // Ensure correct named export
-      canActivate: [authGuard, roleGuard]
   },
   {
     path: 'update/:id',

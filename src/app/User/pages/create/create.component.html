@@ -5,7 +5,7 @@
   <form [formGroup]="formUser" fxFlex="60%">
     <mat-card class="form-card">
       <mat-card-header>
-        <h1> Crear Usuario</h1>      
+        <h1> Crear Usuario</h1>
       </mat-card-header>
 
       <mat-card-content  class="example-full-width">
@@ -44,14 +44,13 @@
             <mat-label>Password</mat-label>
             <input matInput formControlName="password" placeholder="Ingrese password">
           </mat-form-field>
-          <mat-form-field class="mat-30" appearance="fill">
+          <mat-form-field *ngIf="rolUsuario === 'admin'" class="mat-30" appearance="fill">
             <mat-label>Rol</mat-label>
             <mat-select formControlName="rol">
               <mat-option *ngFor="let item of listaRoles" [value]="item.name">
-                {{item.name}}
+                {{ item.name }}
               </mat-option>
             </mat-select>
-
           </mat-form-field>
         </div>
 

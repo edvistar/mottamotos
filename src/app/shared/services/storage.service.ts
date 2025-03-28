@@ -29,7 +29,6 @@ export class StorageService {
 
     try {
       const usuarioSesion = JSON.parse(sesionString);
-      console.log("🟢 Sesión obtenida desde localStorage:", usuarioSesion);
       return usuarioSesion;
     } catch (error) {
       console.error("⚠️ Error al parsear la sesión:", error);

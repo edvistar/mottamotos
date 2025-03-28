@@ -3,10 +3,11 @@
   <button mat-icon-button (click)="toggleSidenav();">
     <mat-icon>menu</mat-icon>
   </button>
-
   <span style="flex: 1 1 auto;"></span>
   <i></i>
-  <label >{{username}}</label>
+  <div style="display: flex; align-items: center; gap: 8px;">
+    <mat-chip color="accent" style="font-weight: bold;">{{ username | titlecase }}</mat-chip>
+  </div>
   <button mat-icon-button (click)="cerrarSesion();">
     <mat-icon>logout</mat-icon>
   </button>
@@ -16,31 +17,33 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav opened mode="side" >
     <mat-nav-list>
-      <mat-list-item [routerLink]="'/layout/dashboard'">
+      <mat-list-item>
+        <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+          <mat-chip color="accent" style="font-weight: bold;">{{ rolUsuario | titlecase }}</mat-chip>
+        </div>
+      </mat-list-item>
+
+      <mat-list-item *ngIf="rolUsuario === 'admin'" [routerLink]="'/layout/dashboard'">
         <mat-icon matListItemIcon >dashboard</mat-icon>
       <div matListItemTitle >Dashboard</div>
       </mat-list-item>
-      <mat-list-item [routerLink]="'product/list'">
+      <mat-list-item *ngIf="rolUsuario === 'admin'" [routerLink]="'product/list'">
         <mat-icon matListItemIcon >shopping_bag</mat-icon>
       <div matListItemTitle >Productos</div>
       </mat-list-item>
-      <mat-list-item [routerLink]="'marca/list'">
+      <mat-list-item *ngIf="rolUsuario === 'admin'" [routerLink]="'marca/list'">
         <mat-icon matListItemIcon >shopping_bag</mat-icon>
       <div matListItemTitle >Marcas</div>
       </mat-list-item>
-      <!-- <mat-list-item [routerLink]="''">
+      <mat-list-item *ngIf="rolUsuario === 'admin' || rolUsuario === 'cliente'" [routerLink]="'order/list'">
         <mat-icon matListItemIcon >account_circle</mat-icon>
-      <div matListItemTitle >Usuarios</div>
-      </mat-list-item> -->
-      <!-- <mat-list-item [routerLink]="''">
-        <mat-icon matListItemIcon >account_circle</mat-icon>
-      <div matListItemTitle >Marcas</div>
-      </mat-list-item> -->
-      <mat-list-item [routerLink]="'category/list'">
+      <div matListItemTitle >Ordenes</div>
+      </mat-list-item>
+      <mat-list-item *ngIf="rolUsuario === 'admin'" [routerLink]="'category/list'">
         <mat-icon matListItemIcon >account_circle</mat-icon>
       <div matListItemTitle >Categorias</div>
       </mat-list-item>
-      <mat-list-item [routerLink]="'user/list'">
+      <mat-list-item *ngIf="rolUsuario === 'admin'" [routerLink]="'user/list'">
         <mat-icon matListItemIcon >account_circle</mat-icon>
       <div matListItemTitle >Users</div>
       </mat-list-item>

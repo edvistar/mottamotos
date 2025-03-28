@@ -13,6 +13,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
+import {MatChipsModule} from '@angular/material/chips';
 
 @Component({
   selector: 'app-layout',
@@ -33,7 +35,7 @@ MatTableModule,
 MatInputModule,
 MatIconModule,
 MatListModule,
-RouterModule,
+RouterModule, CommonModule, MatChipsModule
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
@@ -49,6 +51,7 @@ export class LayoutComponent implements OnInit {
     }
   }
   username: string = '';
+  rolUsuario: string = '';
 
   constructor(private router: Router, private _storageService: StorageService,
               private cookieService: CookieService){
@@ -57,6 +60,7 @@ export class LayoutComponent implements OnInit {
     const usuarioSesion = this._storageService.obtenerSesion();
     if (usuarioSesion && usuarioSesion.userName) {
       this.username = usuarioSesion.userName; // ✅ Ahora asigna solo el nombre de usuario
+       this.rolUsuario = usuarioSesion.rol?.toLowerCase() || ''; // Manejar si es null
     }
 
   }
